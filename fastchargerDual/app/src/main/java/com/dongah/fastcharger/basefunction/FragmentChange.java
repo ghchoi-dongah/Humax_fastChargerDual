@@ -92,11 +92,10 @@ public class FragmentChange {
                 break;
             case MEMBER_CARD:
                 try {
-                    onFrameLayoutChange(true);
-                    frameLayoutId = R.id.fullScreen;
+                    onFrameLayoutChange(false);
                     MemberCardFragment memberCardFragment = new MemberCardFragment();
-                    transaction.replace(frameLayoutId, memberCardFragment, "MEMBER_CARD");
                     memberCardFragment.setArguments(bundle);
+                    transaction.replace(frameLayoutId, memberCardFragment, "MEMBER_CARD");
                     transaction.commit();
                 } catch (Exception e) {
                     logger.error("onFragmentChange error : MEMBER_CARD {} ", e.getMessage());
@@ -105,10 +104,9 @@ public class FragmentChange {
             case MEMBER_CARD_WAIT:
                 try {
                     onFrameLayoutChange(true);
-                    frameLayoutId = R.id.fullScreen;
                     MemberCardWaitFragment memberCardWaitFragment = new MemberCardWaitFragment();
-                    transaction.replace(frameLayoutId, memberCardWaitFragment, "MEMBER_CARD_WAIT");
                     memberCardWaitFragment.setArguments(bundle);
+                    transaction.replace(frameLayoutId, memberCardWaitFragment, "MEMBER_CARD_WAIT");
                     transaction.commit();
                 } catch (Exception e) {
                     logger.error("onFragmentChange error : MEMBER_CARD_WAIT {}", e.getMessage());

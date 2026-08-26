@@ -2,9 +2,17 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="1024dp"
+    android:layout_width="512dp"
     android:layout_height="652dp"
     tools:context=".pages.MemberCardFragment">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/layer_list_rect"
+        tools:layout_editor_absoluteX="5dp"
+        tools:layout_editor_absoluteY="5dp" />
 
     <TextView
         android:id="@+id/textViewMemberCard"
@@ -32,16 +40,26 @@
         tools:ignore="contentDescription" />
 
     <ImageView
-        android:id="@+id/imgMemberCardTagging"
+        android:id="@+id/imageViewMemberCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/membercardtagging"
+        android:background="@drawable/member_card"
         android:importantForAccessibility="no"
-        app:layout_constraintStart_toStartOf="@id/imageViewMemberCardReader"
-        app:layout_constraintBottom_toBottomOf="@id/imageViewMemberCardReader"
         app:layout_constraintEnd_toEndOf="@id/imageViewMemberCardReader"
-        app:layout_constraintTop_toTopOf="@id/imageViewMemberCardReader"
+        app:layout_constraintBottom_toBottomOf="@id/imageViewMemberCardReader"
         tools:ignore="contentDescription" />
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imgMemberCardTagging"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/membercardtagging"-->
+<!--        android:importantForAccessibility="no"-->
+<!--        app:layout_constraintStart_toStartOf="@id/imageViewMemberCardReader"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/imageViewMemberCardReader"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/imageViewMemberCardReader"-->
+<!--        app:layout_constraintTop_toTopOf="@id/imageViewMemberCardReader"-->
+<!--        tools:ignore="contentDescription" />-->
 
     <TextView
         android:id="@+id/textViewTagTimer"

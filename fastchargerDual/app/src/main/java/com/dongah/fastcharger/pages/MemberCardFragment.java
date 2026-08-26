@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -48,9 +50,9 @@ public class MemberCardFragment extends Fragment {
 
     int MAX_TIME = 20;
     int cnt = 0;
-    ImageView imgMemberCardTagging;
+    ImageView imageViewMemberCard;
     TextView textViewTagTimer;
-    AnimationDrawable animationDrawable;
+    Animation animation;
     Handler countHandler;
     Runnable countRunnable;
 
@@ -92,9 +94,8 @@ public class MemberCardFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_member_card, container, false);
         textViewTagTimer = view.findViewById(R.id.textViewTagTimer);
-        imgMemberCardTagging = view.findViewById(R.id.imgMemberCardTagging);
-        imgMemberCardTagging.setBackgroundResource(R.drawable.membercardtagging);
-        animationDrawable = (AnimationDrawable) imgMemberCardTagging.getBackground();
+        imageViewMemberCard = view.findViewById(R.id.imageViewMemberCard);
+        animation = AnimationUtils.loadAnimation(getContext(), R.anim.translate);
         String[] requestStrings = new String[1];
         SharedModel sharedModel = new ViewModelProvider(requireActivity()).get(SharedModel.class);
         requestStrings[0] = String.valueOf(mChannel);
@@ -117,7 +118,7 @@ public class MemberCardFragment extends Fragment {
             mediaPlayer.setOnCompletionListener(MediaPlayer::release);
             mediaPlayer.start();
 
-            animationDrawable.start();
+            imageViewMemberCard.startAnimation(animation);
             textViewTagTimer.setText(MAX_TIME + "초");
             
             //count
@@ -143,24 +144,32 @@ public class MemberCardFragment extends Fragment {
             });
 
         } catch (Exception e) {
-            logger.error("MemberCardFragment onViewCreated error : {} ", e.getMessage());
+            logger.error("onViewCreated error : {} ", e.getMessage());
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        try {
+            if (countHandler != null) {
+                countHandler.removeCallbacks(countRunnable);
+                countHandler.removeCallbacksAndMessages(null);
+                countHandler.removeMessages(0);
+            }
+
+            if (animation != null) {
+                imageViewMemberCard.clearAnimation();
+                animation.setAnimationListener(null);
+                animation = null;
+            }
+        } catch (Exception e) {
+            logger.error("onDestroyView error : {}", e.getMessage(), e);
         }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        try {
-            animationDrawable.stop();
-            ((AnimationDrawable) imgMemberCardTagging.getBackground()).stop();
-            imgMemberCardTagging.setBackground(null);
-            if (countHandler != null) {
-                countHandler.removeCallbacks(countRunnable);
-                countHandler.removeCallbacksAndMessages(null);
-                countHandler.removeMessages(0);
-            }
-        } catch (Exception e) {
-            logger.error("MemberCardFragment onDetach error : {} ", e.getMessage());
-        }
     }
 }

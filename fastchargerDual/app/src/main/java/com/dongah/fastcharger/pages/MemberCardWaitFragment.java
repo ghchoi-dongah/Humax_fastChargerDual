@@ -55,10 +55,7 @@ public class MemberCardWaitFragment extends Fragment  {
     private String mParam2;
     private int mChannel;
 
-
-    Handler handler;
-    int currentStep = 0;
-
+    int TIME_MAX = 20;
     int cnt = 0;
     TextView txtMemberWaiting;
     AVLoadingIndicatorView avi;
@@ -66,7 +63,8 @@ public class MemberCardWaitFragment extends Fragment  {
     ClassUiProcess classUiProcess;
     ChargingCurrentData chargingCurrentData;
     ChargerConfiguration chargerConfiguration;
-    Handler countHandler;
+
+    Handler handler, countHandler;
     Runnable countRunnable;
 
     View view;
@@ -140,10 +138,10 @@ public class MemberCardWaitFragment extends Fragment  {
                         public void run() {
                             try {
                                 cnt++;
-                                if (Objects.equals(cnt, 20)) {
+                                if (cnt > TIME_MAX) {
+                                    countHandler.removeCallbacks(countRunnable);
                                     ((MainActivity) MainActivity.mContext).getClassUiProcess(mChannel).onHome();
                                 } else {
-//                                txtCount.setText(String.valueOf(cnt));
                                     countHandler.postDelayed(countRunnable, 1000);
                                 }
                                 //authorize result check
@@ -300,7 +298,7 @@ public class MemberCardWaitFragment extends Fragment  {
 
 
         } catch (Exception e) {
-            logger.error(" MemberCardWaitFragment error : {}", e.getMessage());
+            logger.error("onViewCreated error : {}", e.getMessage(), e);
         }
     }
 
@@ -313,8 +311,8 @@ public class MemberCardWaitFragment extends Fragment  {
     }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
+    public void onDestroyView() {
+        super.onDestroyView();
         try {
             stopAviAnim();
             if (handler != null) {
@@ -323,7 +321,12 @@ public class MemberCardWaitFragment extends Fragment  {
                 countHandler.removeMessages(0);
             }
         } catch (Exception e) {
-            logger.error("MemberCardWaitFragment onDetach : {} ", e.getMessage());
+          logger.error("onDestroyView error : {}", e.getMessage(), e);
         }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
     }
 }

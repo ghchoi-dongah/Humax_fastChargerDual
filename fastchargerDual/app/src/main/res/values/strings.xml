@@ -149,7 +149,7 @@
     <string name="btnConfirm">확인</string>
     <string name="btnCancel">취소</string>
     <string name="socGuideMessage">좌우로 움직여\n목표 SOC를 설정하세요.</string>
-    <string name="memberCardTaggingMessage">회원카드 태깅</string>
+    <string name="memberCardTaggingMessage">회원 카드 태깅</string>
     <string name="memberWaitingMessage">회원 확인 중</string>
     <string name="creditCardTaggingMessage">신용 카드 결제</string>
     <string name="creditCardTaggingSubMessage">선결제로 진행되며, 충전 후 사용한 금액만큼 최종 결제됩니다.\n나머지 금액은 자동 취소됩니다.</string>
