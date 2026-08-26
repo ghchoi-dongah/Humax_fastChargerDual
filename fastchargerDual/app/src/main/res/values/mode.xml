@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="mode">
+        <item>1. 서버</item>
+        <item>2. Auto</item>
+        <item>3. 테스트</item>
+        <item>4. 계량기테스트</item>
+    </string-array>
+</resources>

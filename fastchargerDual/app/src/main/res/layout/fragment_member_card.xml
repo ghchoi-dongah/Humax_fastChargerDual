@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="1024dp"
+    android:layout_height="652dp"
+    tools:context=".pages.MemberCardFragment">
+
+    <TextView
+        android:id="@+id/textViewMemberCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="@string/memberCardTaggingMessage"
+        android:textSize="44sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/imageViewMemberCardReader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/memcard_to_reader_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewMemberCard"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="contentDescription" />
+
+    <ImageView
+        android:id="@+id/imgMemberCardTagging"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/membercardtagging"
+        android:importantForAccessibility="no"
+        app:layout_constraintStart_toStartOf="@id/imageViewMemberCardReader"
+        app:layout_constraintBottom_toBottomOf="@id/imageViewMemberCardReader"
+        app:layout_constraintEnd_toEndOf="@id/imageViewMemberCardReader"
+        app:layout_constraintTop_toTopOf="@id/imageViewMemberCardReader"
+        tools:ignore="contentDescription" />
+
+    <TextView
+        android:id="@+id/textViewTagTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="20초"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="@id/imageViewMemberCardReader"
+        app:layout_constraintEnd_toEndOf="@id/imageViewMemberCardReader"
+        app:layout_constraintTop_toBottomOf="@id/imageViewMemberCardReader" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

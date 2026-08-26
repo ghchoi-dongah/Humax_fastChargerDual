@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:drawable="@drawable/credit_card_insert01"
+        android:duration="400" />
+    <item
+        android:drawable="@drawable/credit_card_insert02"
+        android:duration="400" />
+    <item
+        android:drawable="@drawable/credit_card_insert03"
+        android:duration="400" />
+    <item
+        android:drawable="@drawable/credit_card_insert04"
+        android:duration="400" />
+    <item
+        android:drawable="@drawable/credit_card_insert05"
+        android:duration="400" />
+    <item
+        android:drawable="@drawable/credit_card_insert06"
+        android:duration="400" />
+    <item
+        android:drawable="@drawable/credit_card_insert07"
+        android:duration="400" />
+    <item
+        android:drawable="@drawable/credit_card_insert08"
+        android:duration="400" />
+    <item
+        android:drawable="@drawable/credit_card_insert09"
+        android:duration="400" />
+    <item
+        android:drawable="@drawable/credit_card_insert10"
+        android:duration="400" />
+</animation-list>

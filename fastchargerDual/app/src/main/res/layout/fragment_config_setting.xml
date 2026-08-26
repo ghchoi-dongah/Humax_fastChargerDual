@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="1024dp"
+    android:layout_height="652dp"
+    android:orientation="horizontal"
+    tools:context=".pages.ConfigSettingFragment">
+
+    <TextView
+        android:id="@+id/txtChargerType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtChargerType"
+        android:layout_marginStart="70dp"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerChargerType"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:dropDownWidth="300dp"
+        android:spinnerMode="dropdown"
+        android:theme="@style/SpinnerTheme"
+        android:background="@drawable/spinner_background"
+        app:layout_constraintLeft_toRightOf="@id/txtChargerType"
+        app:layout_constraintTop_toTopOf="@id/txtChargerType" />
+
+    <TextView
+        android:id="@+id/txtModel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/txtModel"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtChargerType"
+        app:layout_constraintEnd_toEndOf="@id/txtChargerType" />
+
+    <Spinner
+        android:id="@+id/spinnerChargerModel"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:dropDownWidth="300dp"
+        android:spinnerMode="dropdown"
+        android:theme="@style/SpinnerTheme"
+        android:background="@drawable/spinner_background"
+        app:layout_constraintLeft_toRightOf="@id/txtModel"
+        app:layout_constraintTop_toTopOf="@id/txtModel" />
+
+    <TextView
+        android:id="@+id/txtChargerId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/txtChargerId"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtModel"
+        app:layout_constraintEnd_toEndOf="@id/txtModel" />
+
+    <EditText
+        android:id="@+id/editChargerId"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:inputType="text"
+        android:maxLines="1"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:background="@drawable/shape_edit_text_focus"
+        app:layout_constraintTop_toBottomOf="@id/txtModel"
+        app:layout_constraintLeft_toRightOf="@id/txtModel"
+        tools:ignore="Autofill,LabelFor" />
+
+    <TextView
+        android:id="@+id/txtHttpURL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/txtHttpURL"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtChargerId"
+        app:layout_constraintEnd_toEndOf="@id/txtChargerId" />
+
+
+    <TextView
+        android:id="@+id/txtServerURL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/txtServerURL"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtHttpURL"
+        app:layout_constraintEnd_toEndOf="@id/txtHttpURL" />
+
+    <EditText
+        android:id="@+id/editHttpURL"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:inputType="text"
+        android:maxLines="1"
+        android:imeOptions="flagNoExtractUi"
+        android:background="@drawable/shape_edit_text_focus"
+        app:layout_constraintBottom_toBottomOf="@id/txtHttpURL"
+        app:layout_constraintLeft_toLeftOf="@id/editChargerId"
+        tools:ignore="Autofill,LabelFor,TextFields" />
+
+    <EditText
+        android:id="@+id/editServerUrl"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:inputType="text"
+        android:maxLines="1"
+        android:background="@drawable/shape_edit_text_focus"
+        app:layout_constraintTop_toBottomOf="@id/editHttpURL"
+        app:layout_constraintLeft_toRightOf="@id/txtServerURL"
+        tools:ignore="Autofill,LabelFor,TextFields" />
+
+    <TextView
+        android:id="@+id/txtServerPort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/txtServerPort"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtServerURL"
+        app:layout_constraintEnd_toEndOf="@id/txtServerURL" />
+
+    <EditText
+        android:id="@+id/editServerPort"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:inputType="text"
+        android:maxLines="1"
+        android:background="@drawable/shape_edit_text_focus"
+        app:layout_constraintLeft_toRightOf="@id/txtServerPort"
+        app:layout_constraintTop_toBottomOf="@id/editServerUrl"
+        tools:ignore="Autofill,LabelFor" />
+
+    <TextView
+        android:id="@+id/txtControlBoard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/txtControlBoard"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtServerPort"
+        app:layout_constraintEnd_toEndOf="@id/txtServerPort" />
+
+    <EditText
+        android:id="@+id/editControlPort"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:inputType="text"
+        android:maxLines="1"
+        android:background="@drawable/shape_edit_text_focus"
+        app:layout_constraintTop_toBottomOf="@id/editServerPort"
+        app:layout_constraintLeft_toRightOf="@id/txtControlBoard"
+        tools:ignore="Autofill,LabelFor" />
+
+    <TextView
+        android:id="@+id/txtRFCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/txtRFCard"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtControlBoard"
+        app:layout_constraintEnd_toEndOf="@id/txtControlBoard" />
+
+    <EditText
+        android:id="@+id/editRfPort"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:inputType="text"
+        android:maxLines="1"
+        android:background="@drawable/shape_edit_text_focus"
+        app:layout_constraintTop_toBottomOf="@id/editControlPort"
+        app:layout_constraintLeft_toRightOf="@id/txtRFCard"
+        tools:ignore="Autofill,LabelFor" />
+
+    <TextView
+        android:id="@+id/txtCredit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/txtCredit"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtRFCard"
+        app:layout_constraintEnd_toEndOf="@id/txtRFCard" />
+
+    <EditText
+        android:id="@+id/editCreditPort"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:inputType="text"
+        android:maxLines="1"
+        android:background="@drawable/shape_edit_text_focus"
+        app:layout_constraintTop_toBottomOf="@id/editRfPort"
+        app:layout_constraintLeft_toRightOf="@id/txtCredit"
+        tools:ignore="Autofill,LabelFor" />
+
+    <TextView
+        android:id="@+id/txtDR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/txtDR"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtCredit"
+        app:layout_constraintEnd_toEndOf="@id/txtCredit" />
+
+    <EditText
+        android:id="@+id/editDR"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:inputType="text"
+        android:maxLines="1"
+        android:background="@drawable/shape_edit_text_focus"
+        app:layout_constraintTop_toBottomOf="@id/editCreditPort"
+        app:layout_constraintLeft_toRightOf="@id/txtDR"
+        tools:ignore="Autofill,LabelFor" />
+
+    <TextView
+        android:id="@+id/txtTestPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/txtTestPrice"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtDR"
+        app:layout_constraintEnd_toEndOf="@id/txtDR" />
+
+    <EditText
+        android:id="@+id/editTestPrice"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:inputType="text"
+        android:maxLines="1"
+        android:background="@drawable/shape_edit_text_focus"
+        app:layout_constraintTop_toBottomOf="@id/editDR"
+        app:layout_constraintLeft_toRightOf="@id/txtTestPrice"
+        android:textColorHint="#ffc0c0c0"
+        android:hint="테스트 단가"
+        tools:ignore="Autofill,HardcodedText" />
+
+    <TextView
+        android:id="@+id/txtPayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/payMode"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtTestPrice"
+        app:layout_constraintEnd_toEndOf="@id/txtTestPrice" />
+
+    <Spinner
+        android:id="@+id/spinnerPayment"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:dropDownWidth="300dp"
+        android:spinnerMode="dropdown"
+        android:theme="@style/SpinnerTheme"
+        android:background="@drawable/spinner_background"
+        app:layout_constraintLeft_toRightOf="@id/txtPayment"
+        app:layout_constraintTop_toTopOf="@id/txtPayment" />
+
+    <TextView
+        android:id="@+id/txtMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/mode"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtPayment"
+        app:layout_constraintEnd_toEndOf="@id/txtPayment" />
+
+    <Spinner
+        android:id="@+id/spinnerMode"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:dropDownWidth="300dp"
+        android:spinnerMode="dropdown"
+        android:theme="@style/SpinnerTheme"
+        android:background="@drawable/spinner_background"
+        app:layout_constraintLeft_toRightOf="@id/txtMode"
+        app:layout_constraintTop_toTopOf="@id/txtMode" />
+
+    <TextView
+        android:id="@+id/txtVendorCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:text="@string/txtVendorCode"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="@id/spinnerChargerType"
+        app:layout_constraintLeft_toRightOf="@id/spinnerChargerType" />
+
+    <EditText
+        android:id="@+id/editVendorCode"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:inputType="text"
+        android:maxLines="1"
+        android:background="@drawable/shape_edit_text_focus"
+        app:layout_constraintTop_toTopOf="@id/txtVendorCode"
+        app:layout_constraintLeft_toRightOf="@id/txtVendorCode"
+        tools:ignore="Autofill" />
+
+    <TextView
+        android:id="@+id/txtPriceVendor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/txtPriceVendor"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtVendorCode"
+        app:layout_constraintEnd_toEndOf="@id/txtVendorCode" />
+
+    <EditText
+        android:id="@+id/editPriceVendor"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:inputType="text"
+        android:maxLines="1"
+        android:background="@drawable/shape_edit_text"
+        app:layout_constraintTop_toBottomOf="@id/editVendorCode"
+        app:layout_constraintLeft_toRightOf="@id/txtPriceVendor"
+        tools:ignore="Autofill" />
+
+    <TextView
+        android:id="@+id/txtSerial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/txtSerial"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtPriceVendor"
+        app:layout_constraintEnd_toEndOf="@id/txtPriceVendor" />
+
+    <EditText
+        android:id="@+id/editSerial"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="10dp"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:inputType="text"
+        android:maxLines="1"
+        android:background="@drawable/shape_edit_text"
+        app:layout_constraintTop_toBottomOf="@id/editPriceVendor"
+        app:layout_constraintLeft_toRightOf="@id/txtSerial"
+        tools:ignore="Autofill" />
+
+    <TextView
+        android:id="@+id/txtFirmware"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/txtFirmware"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtSerial"
+        app:layout_constraintEnd_toEndOf="@id/txtSerial" />
+
+    <EditText
+        android:id="@+id/editFirmware"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:inputType="text"
+        android:maxLines="1"
+        android:background="@drawable/shape_edit_text_focus"
+        app:layout_constraintTop_toBottomOf="@id/editSerial"
+        app:layout_constraintLeft_toRightOf="@id/txtFirmware"
+        tools:ignore="Autofill" />
+
+    <TextView
+        android:id="@+id/txtIccId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/txtIccId"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtFirmware"
+        app:layout_constraintEnd_toEndOf="@id/txtFirmware" />
+
+    <EditText
+        android:id="@+id/editIccId"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:inputType="text"
+        android:maxLines="1"
+        android:background="@drawable/shape_edit_text"
+        app:layout_constraintTop_toBottomOf="@id/editFirmware"
+        app:layout_constraintLeft_toRightOf="@id/txtIccId"
+        tools:ignore="Autofill" />
+
+    <Button
+        android:id="@+id/btnKeyBoard"
+        android:layout_width="152dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="7dp"
+        android:text="@string/btnKeyBoard"
+        android:textSize="18sp"
+        android:textColor="@color/primary"
+        android:background="@drawable/selector_default_btn"
+        app:backgroundTint="@null"
+        app:layout_constraintTop_toTopOf="@id/editIccId"
+        app:layout_constraintLeft_toRightOf="@id/editIccId" />
+
+    <TextView
+        android:id="@+id/txtImsi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/txtImsi"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtIccId"
+        app:layout_constraintEnd_toEndOf="@id/txtIccId" />
+
+    <EditText
+        android:id="@+id/editImsi"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:inputType="text"
+        android:maxLines="1"
+        android:background="@drawable/shape_edit_text"
+        app:layout_constraintTop_toBottomOf="@id/editIccId"
+        app:layout_constraintLeft_toRightOf="@id/txtImsi"
+        tools:ignore="Autofill" />
+
+    <TextView
+        android:id="@+id/txtGps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/txtGps"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtImsi"
+        app:layout_constraintEnd_toEndOf="@id/txtImsi" />
+
+    <EditText
+        android:id="@+id/editGpsX"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="@string/txtXGps"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:textColorHint="#ffc0c0c0"
+        android:inputType="text"
+        android:maxLines="1"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/shape_edit_text"
+        app:layout_constraintTop_toBottomOf="@id/editImsi"
+        app:layout_constraintLeft_toRightOf="@id/txtGps"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/editGpsY"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:hint="@string/txtYGps"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:textColorHint="#ffc0c0c0"
+        android:inputType="text"
+        android:maxLines="1"
+        android:background="@drawable/shape_edit_text"
+        app:layout_constraintTop_toBottomOf="@id/editImsi"
+        app:layout_constraintLeft_toRightOf="@id/editGpsX"
+        tools:ignore="Autofill" />
+
+    <TextView
+        android:id="@+id/txtM2mTel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/txtM2mTel"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtGps"
+        app:layout_constraintEnd_toEndOf="@id/txtGps" />
+
+    <EditText
+        android:id="@+id/editM2mTel"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:inputType="text"
+        android:maxLines="1"
+        android:background="@drawable/shape_edit_text"
+        app:layout_constraintTop_toBottomOf="@id/editGpsX"
+        app:layout_constraintLeft_toRightOf="@id/txtM2mTel"
+        tools:ignore="Autofill" />
+
+    <TextView
+        android:id="@+id/txtRfMaker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/txtRfMaker"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtM2mTel"
+        app:layout_constraintEnd_toEndOf="@id/txtM2mTel" />
+
+    <EditText
+        android:id="@+id/editRfMaker"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:inputType="text"
+        android:maxLines="1"
+        android:background="@drawable/shape_edit_text"
+        app:layout_constraintTop_toBottomOf="@id/editM2mTel"
+        app:layout_constraintLeft_toRightOf="@id/txtRfMaker"
+        tools:ignore="Autofill" />
+
+    <TextView
+        android:id="@+id/txtStatusNotificationDelay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/txtMeyerValueDelay"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtRfMaker"
+        app:layout_constraintEnd_toEndOf="@id/txtRfMaker" />
+
+    <EditText
+        android:id="@+id/editStatusNotificationDelay"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:gravity="right"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:inputType="text"
+        android:maxLines="1"
+        android:background="@drawable/shape_edit_text"
+        app:layout_constraintTop_toBottomOf="@id/editRfMaker"
+        app:layout_constraintLeft_toRightOf="@id/txtStatusNotificationDelay"
+        tools:ignore="Autofill,RtlHardcoded" />
+
+    <TextView
+        android:id="@+id/txtTargetSoc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/txtTargetSoc"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtStatusNotificationDelay"
+        app:layout_constraintEnd_toEndOf="@id/txtStatusNotificationDelay" />
+
+    <EditText
+        android:id="@+id/editTargetSoc"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:gravity="right"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:inputType="text"
+        android:maxLines="1"
+        android:background="@drawable/shape_edit_text_focus"
+        app:layout_constraintTop_toBottomOf="@id/editStatusNotificationDelay"
+        app:layout_constraintLeft_toRightOf="@id/txtTargetSoc"
+        tools:ignore="Autofill,RtlHardcoded" />
+
+    <TextView
+        android:id="@+id/txtTargetChargingTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/txtTargetChargingTime"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtTargetSoc"
+        app:layout_constraintEnd_toEndOf="@id/txtTargetSoc" />
+
+    <EditText
+        android:id="@+id/editTargetChargingTime"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:gravity="right"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:inputType="text"
+        android:maxLines="1"
+        android:background="@drawable/shape_edit_text_focus"
+        app:layout_constraintTop_toBottomOf="@id/editTargetSoc"
+        app:layout_constraintLeft_toRightOf="@id/txtTargetChargingTime"
+        tools:ignore="Autofill,RtlHardcoded" />
+
+    <CheckBox
+        android:id="@+id/chkStopConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/txtStopConfirm"
+        android:checked="false"
+        app:layout_constraintTop_toBottomOf="@id/editTargetChargingTime"
+        app:layout_constraintStart_toStartOf="@id/editTargetChargingTime" />
+
+    <CheckBox
+        android:id="@+id/chkSigned"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="@string/txtSigned"
+        android:checked="true"
+        app:layout_constraintTop_toTopOf="@id/chkStopConfirm"
+        app:layout_constraintLeft_toRightOf="@id/chkStopConfirm" />
+
+    <Button
+        android:id="@+id/btnConfigSave"
+        android:layout_width="240dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/btnConfigSave"
+        android:textSize="36sp"
+        android:background="@drawable/shape_btn_blue"
+        app:backgroundTint="@null"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <Button
+        android:id="@+id/btnConfigExit"
+        android:layout_width="240dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="30dp"
+        android:text="@string/btnConfigExit"
+        android:textSize="36sp"
+        android:textColor="@color/primary"
+        android:textStyle="bold"
+        android:background="@drawable/selector_default_btn"
+        app:backgroundTint="@null"
+        app:layout_constraintTop_toTopOf="@id/btnConfigSave"
+        app:layout_constraintLeft_toRightOf="@id/btnConfigSave" />
+
+    <Button
+        android:id="@+id/btnPowerOff"
+        android:layout_width="240dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="30dp"
+        android:text="@string/btnPowerOff"
+        android:textSize="36sp"
+        android:textColor="@color/white"
+        android:background="@drawable/shape_btn_red"
+        app:backgroundTint="@null"
+        app:layout_constraintTop_toTopOf="@id/btnConfigExit"
+        app:layout_constraintLeft_toRightOf="@id/btnConfigExit" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

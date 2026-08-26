@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/intel_bg1" android:duration="700" />
+    <item android:drawable="@drawable/intel_bg2" android:duration="700" />
+    <item android:drawable="@drawable/intel_bg3" android:duration="800" />
+</animation-list>

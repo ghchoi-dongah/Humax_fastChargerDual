@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/card_to_reader_01" android:duration="300" />
+    <item android:drawable="@drawable/card_to_reader_02" android:duration="300" />
+    <item android:drawable="@drawable/card_to_reader_03" android:duration="300" />
+    <item android:drawable="@drawable/card_to_reader_04" android:duration="300" />
+    <item android:drawable="@drawable/card_to_reader_05" android:duration="300" />
+    <item android:drawable="@drawable/card_to_reader_06" android:duration="300" />
+    <item android:drawable="@drawable/card_to_reader_07" android:duration="300" />
+    <item android:drawable="@drawable/card_to_reader_08" android:duration="400" />
+</animation-list>

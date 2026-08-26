@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="1024dp"
+    android:layout_height="652dp"
+    tools:context=".pages.ChargingFinishFragment">
+
+    <TextView
+        android:id="@+id/txtChargingFinishMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/FinishNotification"
+        android:textSize="48sp"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtSoc"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:text="100%"
+        android:textSize="96sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/txtChargingFinishMessage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="800dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="10dp"
+        app:cardBackgroundColor="#EFF5FB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtSoc"
+        app:cardCornerRadius="16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgChargingAmt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="54dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/electric_amount"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/txtChargingAmtTitle"
+                app:layout_constraintBottom_toBottomOf="@id/txtChargingAmtTitle"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/txtChargingAmtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/gin_grey"
+                android:text="@string/chargeOfAmount"
+                android:textSize="30sp"
+                app:layout_constraintStart_toEndOf="@id/imgChargingAmt"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/txtAmountOfCharge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center|right"
+                android:text="10.00 kWh"
+                android:textSize="38sp"
+                app:layout_constraintStart_toStartOf="@id/txtChargingAmtTitle"
+                app:layout_constraintTop_toBottomOf="@id/txtChargingAmtTitle" />
+
+
+            <ImageView
+                android:id="@+id/imgAmt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="210dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/electirc_money"
+                app:layout_constraintStart_toEndOf="@id/imgChargingAmt"
+                app:layout_constraintTop_toTopOf="@id/imgChargingAmt"
+                app:layout_constraintBottom_toBottomOf="@id/imgChargingAmt"/>
+
+            <TextView
+                android:id="@+id/txtAmtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="38dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/gin_grey"
+                android:text="@string/chargeAmount"
+                android:textSize="30sp"
+                app:layout_constraintStart_toEndOf="@id/imgAmt"
+                app:layout_constraintBottom_toBottomOf="@id/txtChargingAmtTitle"/>
+
+            <TextView
+                android:id="@+id/txtChargePay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center_horizontal|right"
+                android:text="120,999 원"
+                android:textSize="38sp"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toStartOf="@id/txtAmtTitle"
+                app:layout_constraintTop_toBottomOf="@id/txtAmtTitle"
+                tools:ignore="RtlHardcoded" />
+
+
+            <ImageView
+                android:id="@+id/imgChargingTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="210dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/time"
+                app:layout_constraintStart_toEndOf="@id/imgAmt"
+                app:layout_constraintTop_toTopOf="@id/imgAmt"
+                app:layout_constraintBottom_toBottomOf="@id/imgAmt"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/txtTimeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="38dp"
+                android:textColor="@color/gin_grey"
+                android:text="@string/chargingTime"
+                android:textSize="30sp"
+                app:layout_constraintLeft_toRightOf="@id/imgChargingTime"
+                app:layout_constraintBottom_toBottomOf="@id/txtAmtTitle"/>
+
+            <TextView
+                android:id="@+id/txtChargeTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center_horizontal"
+                android:text="00:00:00"
+                android:textSize="38sp"
+                app:layout_constraintStart_toStartOf="@id/txtTimeTitle"
+                app:layout_constraintTop_toBottomOf="@id/txtTimeTitle"
+                tools:ignore="RtlHardcoded" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/textViewPrePayment"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/recharge_unit_price"
+        android:textSize="22sp"
+        android:textColor="@color/gin_grey"
+        app:layout_constraintTop_toBottomOf="@id/cardView"
+        app:layout_constraintStart_toStartOf="@id/cardView" />
+
+    <TextView
+        android:id="@+id/textViewInputPrePayment"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:text="0원"
+        android:textSize="22sp"
+        android:textColor="@color/gin_grey"
+        app:layout_constraintTop_toTopOf="@id/textViewPrePayment"
+        app:layout_constraintStart_toEndOf="@id/textViewPrePayment"
+        app:layout_constraintBottom_toBottomOf="@id/textViewPrePayment"/>
+
+
+    <TextView
+        android:id="@+id/textViewCancelPayment"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/PartCancelPay"
+        android:textSize="22sp"
+        android:textColor="@color/gin_grey"
+        app:layout_constraintTop_toTopOf="@id/textViewInputCancelPayment"
+        app:layout_constraintBottom_toBottomOf="@id/textViewInputCancelPayment"
+        app:layout_constraintEnd_toStartOf="@id/textViewInputCancelPayment"/>
+
+    <TextView
+        android:id="@+id/textViewInputCancelPayment"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:gravity="end"
+        android:text="0원"
+        android:textSize="22sp"
+        android:textColor="@color/gin_grey"
+        app:layout_constraintTop_toTopOf="@id/textViewPrePayment"
+        app:layout_constraintBottom_toBottomOf="@id/textViewPrePayment"
+        app:layout_constraintEnd_toEndOf="@id/cardView"/>
+
+    <Button
+        android:id="@+id/btnStopConfirm"
+        android:layout_width="380dp"
+        android:layout_height="120dp"
+        android:text="@string/btn_confirm"
+        app:backgroundTint="@null"
+        android:background="@drawable/rounded_blue_button"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

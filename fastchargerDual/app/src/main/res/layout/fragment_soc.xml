@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="1024dp"
+    android:layout_height="652dp"
+    tools:context=".pages.SocFragment"
+    tools:ignore="MissingClass">
+
+    <TextView
+        android:id="@+id/textViewSocMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="@string/socMessage"
+        android:textSize="44sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/txtSocInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:text="100%"
+        android:textSize="92sp"
+        android:textColor="@color/black_500"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewSocMessage"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/imgMinus"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd ="22dp"
+        android:gravity="center"
+        android:text="-"
+        android:textSize="42sp"
+        android:textColor="@color/primary"
+        android:includeFontPadding="false"
+        android:background="@drawable/shape_oval_blue"
+        app:backgroundTint="@null"
+        app:layout_constraintTop_toTopOf="@id/seekBar"
+        app:layout_constraintBottom_toBottomOf="@id/seekBar"
+        app:layout_constraintEnd_toStartOf="@id/seekBar"
+        tools:ignore="SpeakableTextPresentCheck, contentDescription" />
+
+    <Button
+        android:id="@+id/imgPlus"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="22dp"
+        android:gravity="center"
+        android:text="+"
+        android:textSize="32sp"
+        android:textColor="@color/primary"
+        android:includeFontPadding="false"
+        android:background="@drawable/shape_oval_blue"
+        app:backgroundTint="@null"
+        app:layout_constraintTop_toTopOf="@id/seekBar"
+        app:layout_constraintBottom_toBottomOf="@id/seekBar"
+        app:layout_constraintStart_toEndOf="@id/seekBar"
+        tools:ignore="SpeakableTextPresentCheck, contentDescription" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="760dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="25dp"
+        android:paddingEnd="25dp"
+        android:layout_marginTop="50dp"
+        android:minHeight="0dp"
+        android:maxHeight="50dp"
+        android:max="5"
+        android:progress="3"
+        android:progressDrawable="@drawable/seekbar_style"
+        android:splitTrack="false"
+        android:thumb="@drawable/seekbar_custom_thumb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtSocInput"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        style="@style/TextAppearance.Material3.LabelLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="50%"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/seekBar"
+        app:layout_constraintStart_toStartOf="@id/seekBar" />
+
+    <TextView
+        android:id="@+id/txtSocMiddle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="80%"
+        android:textSize="20sp"
+        android:layout_marginStart="470dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintLeft_toLeftOf="@id/seekBar"
+        app:layout_constraintTop_toBottomOf="@id/seekBar"/>
+
+    <TextView
+        style="@style/TextAppearance.Material3.LabelLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:text="100%"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/seekBar"
+        app:layout_constraintEnd_toEndOf="@id/seekBar" />
+
+    <Button
+        android:id="@+id/btnConfirm"
+        android:layout_width="380dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/btnConfirm"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:background="@drawable/shape_btn_blue"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

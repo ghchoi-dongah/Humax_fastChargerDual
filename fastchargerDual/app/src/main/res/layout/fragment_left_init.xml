@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="512dp"
+    android:layout_height="652dp"
+    tools:context=".pages.LeftInitFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <FrameLayout
+        android:id="@+id/leftConnector"
+        android:layout_width="430dp"
+        android:layout_height="580dp"
+        android:background="@drawable/button_custom"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewMemberUnitInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/memChargingUnit"
+                android:textSize="22sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/textViewLeftConnector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/leftConnector"
+                android:textSize="46sp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="106dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/btnQr"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="40dp"
+                android:background="@drawable/qr_code"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/textViewLeftConnector"
+                tools:ignore="contentDescription" />
+
+            <ImageView
+                android:id="@+id/imageViewConnector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/left_connector"
+                app:layout_constraintStart_toStartOf="@id/btnQr"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:ignore="contentDescription" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

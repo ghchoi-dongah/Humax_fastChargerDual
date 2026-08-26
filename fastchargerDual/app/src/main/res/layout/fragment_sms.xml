@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="480dp"
+    android:layout_height="676dp"
+    tools:context=".pages.SmsFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/smsMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/smsMessage"
+        android:textSize="25sp"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="100dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtInputAmt"
+        android:layout_width="372dp"
+        android:layout_height="50dp"
+        android:textSize="40sp"
+        android:hint="010-0000-0000"
+        android:gravity="center_horizontal"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/smsMessage"
+        tools:ignore="HardcodedText" />
+
+    <View
+        android:layout_width="372dp"
+        android:layout_height="1.5dp"
+        android:layout_centerInParent="true"
+        android:background="#224E98"
+        app:layout_constraintLeft_toLeftOf="@id/txtInputAmt"
+        app:layout_constraintTop_toBottomOf="@id/txtInputAmt" />
+
+    <Button
+        android:id="@+id/btnNum1"
+        android:layout_width="86dp"
+        android:layout_height="50dp"
+        android:text="@string/btn_1"
+        app:backgroundTint="@null"
+        android:textSize="19sp"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="100dp"
+        android:tag="1"
+        android:background="@drawable/selector_default_btn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtInputAmt" />
+
+    <Button
+        android:id="@+id/btnNum2"
+        android:layout_width="86dp"
+        android:layout_height="50dp"
+        android:text="@string/btn_2"
+        app:backgroundTint="@null"
+        android:textSize="19sp"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="3dp"
+        android:tag="2"
+        android:background="@drawable/selector_default_btn"
+        app:layout_constraintLeft_toRightOf="@id/btnNum1"
+        app:layout_constraintTop_toBottomOf="@id/txtInputAmt" />
+
+    <Button
+        android:id="@+id/btnNum3"
+        android:layout_width="86dp"
+        android:layout_height="50dp"
+        android:text="@string/btn_3"
+        app:backgroundTint="@null"
+        android:textSize="19sp"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="3dp"
+        android:tag="3"
+        android:background="@drawable/selector_default_btn"
+        app:layout_constraintLeft_toRightOf="@id/btnNum2"
+        app:layout_constraintTop_toBottomOf="@id/txtInputAmt" />
+
+
+    <Button
+        android:id="@+id/btnNum4"
+        android:layout_width="86dp"
+        android:layout_height="50dp"
+        android:text="@string/btn_4"
+        app:backgroundTint="@null"
+        android:textSize="19sp"
+        android:layout_marginTop="3dp"
+        android:tag="4"
+        android:background="@drawable/selector_default_btn"
+        app:layout_constraintLeft_toLeftOf="@id/btnNum1"
+        app:layout_constraintTop_toBottomOf="@id/btnNum1" />
+
+    <Button
+        android:id="@+id/btnNum5"
+        android:layout_width="86dp"
+        android:layout_height="50dp"
+        android:text="@string/btn_5"
+        app:backgroundTint="@null"
+        android:textSize="19sp"
+        android:layout_marginTop="3dp"
+        android:tag="5"
+        android:background="@drawable/selector_default_btn"
+        app:layout_constraintLeft_toLeftOf="@id/btnNum2"
+        app:layout_constraintTop_toBottomOf="@id/btnNum2" />
+
+    <Button
+        android:id="@+id/btnNum6"
+        android:layout_width="86dp"
+        android:layout_height="50dp"
+        android:text="@string/btn_6"
+        app:backgroundTint="@null"
+        android:textSize="19sp"
+        android:layout_marginTop="3dp"
+        android:tag="6"
+        android:background="@drawable/selector_default_btn"
+        app:layout_constraintLeft_toLeftOf="@id/btnNum3"
+        app:layout_constraintTop_toBottomOf="@id/btnNum3" />
+
+    <Button
+        android:id="@+id/btnNum7"
+        android:layout_width="86dp"
+        android:layout_height="50dp"
+        android:text="@string/btn_7"
+        app:backgroundTint="@null"
+        android:textSize="19sp"
+        android:layout_marginTop="3dp"
+        android:tag="7"
+        android:background="@drawable/selector_default_btn"
+        app:layout_constraintLeft_toLeftOf="@id/btnNum4"
+        app:layout_constraintTop_toBottomOf="@id/btnNum4" />
+
+    <Button
+        android:id="@+id/btnNum8"
+        android:layout_width="86dp"
+        android:layout_height="50dp"
+        android:text="@string/btn_8"
+        app:backgroundTint="@null"
+        android:textSize="19sp"
+        android:layout_marginTop="3dp"
+        android:tag="8"
+        android:background="@drawable/selector_default_btn"
+        app:layout_constraintLeft_toLeftOf="@id/btnNum5"
+        app:layout_constraintTop_toBottomOf="@id/btnNum5" />
+
+    <Button
+        android:id="@+id/btnNum9"
+        android:layout_width="86dp"
+        android:layout_height="50dp"
+        android:text="@string/btn_9"
+        app:backgroundTint="@null"
+        android:textSize="19sp"
+        android:layout_marginTop="3dp"
+        android:tag="9"
+        android:background="@drawable/selector_default_btn"
+        app:layout_constraintLeft_toLeftOf="@id/btnNum6"
+        app:layout_constraintTop_toBottomOf="@id/btnNum6" />
+
+    <Button
+        android:id="@+id/btnNum010"
+        android:layout_width="86dp"
+        android:layout_height="50dp"
+        android:text="@string/btn_010"
+        app:backgroundTint="@null"
+        android:textSize="19sp"
+        android:layout_marginTop="3dp"
+        android:tag="010"
+        android:background="@drawable/selector_default_btn"
+        app:layout_constraintLeft_toLeftOf="@id/btnNum7"
+        app:layout_constraintTop_toBottomOf="@id/btnNum7" />
+
+    <Button
+        android:id="@+id/btnNum0"
+        android:layout_width="86dp"
+        android:layout_height="50dp"
+        android:text="@string/btn_0"
+        app:backgroundTint="@null"
+        android:textSize="19sp"
+        android:layout_marginTop="3dp"
+        android:tag="0"
+        android:background="@drawable/selector_default_btn"
+        app:layout_constraintLeft_toLeftOf="@id/btnNum8"
+        app:layout_constraintTop_toBottomOf="@id/btnNum8" />
+
+    <Button
+        android:id="@+id/btnDel"
+        android:layout_width="86dp"
+        android:layout_height="50dp"
+        android:text="@string/btn_Del"
+        app:backgroundTint="@null"
+        android:textSize="19sp"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/selector_default_btn"
+        app:layout_constraintLeft_toLeftOf="@id/btnNum9"
+        app:layout_constraintTop_toBottomOf="@id/btnNum9" />
+
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:text="@string/btn_Cancel"
+        app:backgroundTint="@null"
+        android:textSize="19sp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/selector_default_btn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnNum010" />
+
+    <Button
+        android:id="@+id/btnConfirm"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:text="@string/btn_confirm"
+        app:backgroundTint="@null"
+        android:textSize="19sp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/selector_default_btn"
+        app:layout_constraintLeft_toRightOf="@id/btnCancel"
+        app:layout_constraintTop_toBottomOf="@id/btnNum010" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

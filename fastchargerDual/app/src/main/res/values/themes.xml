@@ -1,0 +1,19 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.FastCharger" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="Theme.FastCharger" parent="Base.Theme.FastCharger" />
+
+    <style name="SpinnerDivideStyle" parent="android:style/Widget.ListView.DropDown">
+        <item name="android:divider">@color/black</item> <!-- divider 색 -->
+        <item name="android:dividerHeight">1dp</item> <!-- divider 높이 -->
+    </style>
+    <style name="SpinnerTheme">
+        <item name="android:dropDownListViewStyle">@style/SpinnerDivideStyle</item>
+    </style>
+</resources>

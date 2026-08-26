@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="orange">#ff9900</color>
+    <color name="gray">#E8E8E8</color>
+    <color name="darkgray">#666666</color>
+    <color name="background">#E8E8F1</color>
+    <color name="member">#2E4298</color>
+    <color name="blue">#3104B4</color>
+    <color name="msgColor">#FCE1C7</color>
+    <color name="stopColor">#EA5D5D</color>
+    <color name="gin_grey">#666666</color>
+
+    <color name="pressed">#F4F6FF</color>
+
+    <color name="btnGradientStartColor">#68B7DE</color>
+    <color name="btnGradientCenterColor">#134994</color>
+    <color name="btnGradientEndColor">#121C3C</color>
+
+    <color name="btnPressGradientStartColor">#F4F6FF</color>
+    <color name="btnPressGradientCenterColor">#CBDCEB</color>
+    <color name="btnPressGradientEndColor">#608BC1</color>
+
+    <color name="btnCancel">#EACEB4</color>
+    <color name="btnCheck">#E1F6F4</color>
+    <color name="btnClick">#EEEEEE</color>
+
+    <color name="primary">#06377B</color>
+    <color name="black_500">#FF353535</color>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="chargerType">
+        <item>1. DC CHAdeMO</item>
+        <item>2. AC Slow</item>
+        <item>3. CHAdeMO + AC3</item>
+        <item>4. DC CHAdeMO + DC Combo</item>
+        <item>5. DC Combo</item>
+        <item>6. DC CHAdeMO + AC3 + DC Combo</item>
+        <item>7. AC3</item>
+        <item>8. DC Combo2</item>
+        <item>9. DC Combo2 + DC Combo2</item>
+    </string-array>
+</resources>

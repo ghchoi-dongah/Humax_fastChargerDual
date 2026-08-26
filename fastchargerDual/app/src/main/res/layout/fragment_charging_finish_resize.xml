@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout   xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="512dp"
+    android:layout_height="652dp"
+    tools:context=".pages.ChargingFinishResizeFragment">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:background="@drawable/layer_list_rect" />
+
+    <TextView
+        android:id="@+id/textViewChargingMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/chargingFinish"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <!-- 1. 배경용 -->
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progressBackground"
+        android:layout_width="210dp"
+        android:layout_height="210dp"
+        app:indicatorSize="210dp"
+        app:trackThickness="15dp"
+        app:indicatorColor="#EEEEEE"
+        android:progress="100"
+        app:layout_constraintTop_toTopOf="@id/progressCircular"
+        app:layout_constraintBottom_toBottomOf="@id/progressCircular"
+        app:layout_constraintStart_toStartOf="@id/progressCircular"
+        app:layout_constraintEnd_toEndOf="@id/progressCircular" />
+
+    <!-- 2. 실제 게이지 -->
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progressCircular"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="40dp"
+        android:progress="60"
+        app:indicatorSize="220dp"
+        app:trackThickness="26dp"
+        app:indicatorColor="@color/primary"
+        app:trackCornerRadius="6dp"
+        app:trackColor="@android:color/transparent"
+        app:layout_constraintTop_toBottomOf="@id/textViewChargingMessage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/txtSoc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="100%"
+        android:textSize="56sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="@id/progressCircular"
+        app:layout_constraintStart_toStartOf="@id/progressCircular"
+        app:layout_constraintEnd_toEndOf="@id/progressCircular"
+        app:layout_constraintBottom_toBottomOf="@id/progressCircular" />
+
+    <TextView
+        android:id="@+id/textViewChargingFinishSubMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/connectorDisconnectMessage"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/progressCircular"
+        app:layout_constraintEnd_toEndOf="@id/view"
+        app:layout_constraintStart_toStartOf="@id/view"
+        app:layout_constraintBottom_toTopOf="@id/cardView1"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView1"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnStopConfirm">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_card_bg"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="8dp">
+
+            <TextView
+                android:id="@+id/textViewInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chargeInfo"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <View
+                android:id="@+id/viewLine1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="5dp"
+                android:background="#E7E7E7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewInfo" />
+
+            <TextView
+                android:id="@+id/textViewPartCancelPayUsedContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/charge_of_amount"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewLine1" />
+
+            <TextView
+                android:id="@+id/txtAmountOfCharge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="70kWh"
+                android:textSize="16sp"
+                android:textColor="@color/black_500"
+                app:layout_constraintTop_toTopOf="@id/textViewPartCancelPayUsedContent"
+                app:layout_constraintEnd_toEndOf="@id/viewLine1"
+                app:layout_constraintBottom_toBottomOf="@id/textViewPartCancelPayUsedContent" />
+
+            <TextView
+                android:id="@+id/textViewMoneyContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/chargeAmount"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/textViewPartCancelPayUsedContent"
+                app:layout_constraintStart_toStartOf="@id/textViewPartCancelPayUsedContent" />
+
+            <TextView
+                android:id="@+id/txtChargePay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20,000원"
+                android:textSize="16sp"
+                android:textColor="@color/black_500"
+                app:layout_constraintTop_toTopOf="@id/textViewMoneyContent"
+                app:layout_constraintEnd_toEndOf="@id/viewLine1"
+                app:layout_constraintBottom_toBottomOf="@id/textViewMoneyContent" />
+
+            <TextView
+                android:id="@+id/textViewTimeContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/charging_time"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/textViewMoneyContent"
+                app:layout_constraintStart_toStartOf="@id/textViewMoneyContent" />
+
+            <TextView
+                android:id="@+id/txtChargeTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:22:12"
+                android:textSize="16sp"
+                android:textColor="@color/black_500"
+                app:layout_constraintTop_toTopOf="@id/textViewTimeContent"
+                app:layout_constraintEnd_toEndOf="@id/viewLine1"
+                app:layout_constraintBottom_toBottomOf="@id/textViewTimeContent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="0dp"
+        app:layout_constraintStart_toStartOf="@id/cardView1"
+        app:layout_constraintTop_toBottomOf="@id/cardView1" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_card_bg"
+            android:paddingStart="20dp"
+            android:paddingEnd="8dp"
+            android:paddingVertical="8dp">
+
+            <View
+                android:id="@+id/viewLine2"
+                android:layout_width="2dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="5dp"
+                android:background="#E7E7E7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                android:id="@+id/textViewPrePayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/recharge_unit_price"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewInputPrePayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:text="0원"
+                android:textSize="16sp"
+                android:textColor="@color/black_500"
+                app:layout_constraintTop_toTopOf="@id/textViewPrePayment"
+                app:layout_constraintEnd_toStartOf="@id/viewLine2"
+                app:layout_constraintBottom_toBottomOf="@id/textViewPrePayment"/>
+
+            <TextView
+                android:id="@+id/textViewPartCancelPay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/PartCancelPay"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/viewLine2" />
+
+            <TextView
+                android:id="@+id/textViewInputCancelPayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="0원"
+                android:textSize="16sp"
+                android:textColor="@color/gin_grey"
+                app:layout_constraintTop_toTopOf="@id/textViewPartCancelPay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/textViewPartCancelPay"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnStopConfirm"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/btnConfirm"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:background="@drawable/shape_btn_blue"
+        app:backgroundTint="@null"
+        app:layout_constraintWidth_percent="0.85"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout >

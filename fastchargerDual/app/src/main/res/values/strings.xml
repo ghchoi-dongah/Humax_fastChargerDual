@@ -1,0 +1,181 @@
+<resources>
+    <string name="app_name">Fast Charger</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="adminTitle"><font color='#e87f00'>관리자 모드</font><font color='#000000'>를 실행할 </font><font color='#e87f00'>패스워드</font><font color='#000000'>를 입력한 후, \n확인 버튼을 누르세요.</font></string>
+    <string name="btn_Cancel"><font color="#FF000000">취소</font></string>
+    <string name="btn_confirm">확인</string>
+    <string name="memberCardMessage"><font color="#FF000000">회원카드</font></string>
+    <string name="creditCardMessage"><font color="#FF000000">신용카드</font></string>
+    <string name="chargingMessage"><font color="#000000">충전 중</font></string>
+    <string name="chargingNotification">차량에서 커넥터를 분리하지 마세요.</string>
+    <string name="chargingUnit">충전단가</string>
+    <string name="unitPrice">0.0 원</string>
+    <string name="charge_amount">충전 금액</string>
+    <string name="chargingprice">50,000 원</string>
+    <string name="chargingTime">충전 시간</string>
+    <string name="charging_time">충전시간</string>
+    <string name="charge_of_amount">충전량</string>
+    <string name="chargingamt">0 kw</string>
+    <string name="remainTime">남은시간</string>
+    <string name="outPower">충전전력</string>
+    <string name="outCurrent">충전전류</string>
+    <string name="outVoltage">충전전압</string>
+    <string name="requestCurrent">요청전류</string>
+    <string name="smsTextMessage">충전 정보\n문자 서비스</string>
+    <string name="chargingStopMessage">충전종료</string>
+    <string name="chargingFinish">충전 완료</string>
+    <string name="chargingFinishMessage">충전 정보를 확인하고 <font color="#2E4298"> 확인</font> 버튼을 눌러주세요</string>
+    <string name="recharge_unit_price">선결제금액</string>
+    <string name="PartCancelPay">부분취소금액</string>
+    <string name="paymentMessage"> 실결제 금액</string>
+    <string name="txtChargerType">충전기 타입</string>
+    <string name="txtModel">충전기 모델명</string>
+    <string name="txtChargerId">충전소 ID</string>
+    <string name="txtServerURL">서버 URL</string>
+    <string name="txtServerPort">서버 Port</string>
+    <string name="txtControlBoard">컨트롤보드 Port</string>
+    <string name="txtRFCard">RF-Card Port</string>
+    <string name="txtCredit">결제 단말기 Port</string>
+    <string name="txtDR">출력 전류 제한(kW)</string>
+    <string name="txtTestPrice">테스트 단가</string>
+    <string name="headerPayment">[결제 선택]</string>
+    <string name="rbMemberCredit">회원카드＋신용카드</string>
+    <string name="rbMember">회원카드</string>
+    <string name="rbCredit">신용카드</string>
+    <string name="headerMode">[인증 모드 선택]</string>
+    <string name="rbServerMode"> 서버 </string>
+    <string name="rbAutoMode"> Auto </string>
+    <string name="rbTestMode"> 테스트 </string>
+    <string name="rbPowerMeterMode"> 계량기 테스트 </string>
+    <string name="txtVendorCode">제조사 코드</string>
+    <string name="txtPriceVendor">충전 사업자 요금 코드</string>
+    <string name="txtSerial">충전기 Serial</string>
+    <string name="txtFirmware">Firmware Ver.</string>
+    <string name="txtIccId">Modem ICC ID</string>
+    <string name="btnKeyBoard">키보드 Hide</string>
+    <string name="txtImsi">Modem IMSI</string>
+    <string name="txtGps">GPS 좌표</string>
+    <string name="txtXGps">X 좌표</string>
+    <string name="txtYGps">Y 좌표</string>
+    <string name="txtM2mTel">모뎀 전화번호</string>
+    <string name="txtRfMaker">RF 제조사</string>
+    <string name="txtMeyerValueDelay">MeterValue Delay</string>
+    <string name="txtTargetSoc"> 제한 SoC</string>
+    <string name="txtTargetChargingTime"> 제한 충전 시간(분)</string>
+    <string name="btnConfigSave">저장</string>
+    <string name="btnConfigExit">나가기</string>
+    <string name="btnPowerOff">Reboot</string>
+    <string name="plugWaite"><font color="#2E4298">충전</font> 준비 중입니다.\n 잠시만 기다려 주세요.</string>
+    <string name="channelSelect"> [ 채널 선택] </string>
+    <string name="channel1"> 1번 채널 </string>
+    <string name="channel2"> 2번 채널 </string>
+    <string name="btnExit"> 나가기 </string>
+    <string name="creditMessage"><font color="#000000">충전 금액 설정</font></string>
+    <string name="priceMessage"> 충전 금액 </string>
+    <string name="payUnitMessage">원</string>
+    <string name="chargeUnit"><font color="#999999">충전 단가 : </font></string>
+    <string name="remainTimeTitle"><font color="#999999">남은 시간 : </font></string>
+    <string name="chargeExpect"><font color="#999999">예상 충전량 : </font></string>
+    <string name="btn_500"><font color="#FF000000">500 원</font></string>
+    <string name="btn_1000"><font color="#FF000000">1,000 원</font></string>
+    <string name="btn_5000"><font color="#FF000000">5,000 원</font></string>
+    <string name="btn_10000"><font color="#FF000000">10,000 원</font></string>
+    <string name="btn_20000"><font color="#FF000000">20,000 원</font></string>
+    <string name="btn_Full"><font color="#FF000000">50,000 원</font></string>
+    <string name="btn_clear"><font color="#FF000000">초 기 화</font></string>
+    <string name="btn_pay"><font color="#FFFFFFFF"> 결     제 </font></string>
+    <string name="creditwaitMessage"><font color="#2E4298">신용카드</font>를<font color="#2E4298"> 카드 투입구</font>에 넣어 주세요.</string>
+    <string name="preAmtMessage"> 결제 금액</string>
+    <string name="creditSuccess"><font color="#2E4298">결제 성공</font>하였습니다.</string>
+    <string name="creditCardOut"><font color="#E55927">※ 카드리더기에서 카드를 제거 해주세요</font></string>
+    <string name="configButton">환경설정</string>
+    <string name="webSocketButton">Web-Socket</string>
+    <string name="controlButton">Control 보드</string>
+    <string name="uiButton">화면전환</string>
+    <string name="userInfoButton">회원\n등록</string>
+    <string name="loadTest">Load Test</string>
+    <string name="exitButton">종 료</string>
+    <string name="startMessage"><font color="#FF000000">충전시작</font></string>
+    <string name="initMessage"><font color="#FF000000">차량에 커넥터를 연결하고 시작</font></string>
+    <string name="memberCardTagging"><font color="#2E4298">회원카드</font>를 <font color="#2E4298">리더기</font>에\n접촉하여 주세요. </string>
+    <string name="txtMemberWaiting">회원 <font color="#2E4298">확인 중</font>입니다. \n잠시만 기다려주세요.</string>
+    <string name="stopMessage"><font color='#000000'>충전을 종료하시겠습니까?</font></string>
+    <string name="couplerMessage">차량에 커넥터 연결 시 충전 시작</string>
+    <string name="smsMessage"><font color="#2E4298">충전 정보</font>를 수신할\n <font color="#2E4298">전화번호</font>를 입력해주세요.</string>
+    <string name="btn_0"><font color="#FF000000">0</font></string>
+    <string name="btn_1"><font color="#FF000000">1</font></string>
+    <string name="btn_2"><font color="#FF000000">2</font></string>
+    <string name="btn_3"><font color="#FF000000">3</font></string>
+    <string name="btn_4"><font color="#FF000000">4</font></string>
+    <string name="btn_5"><font color="#FF000000">5</font></string>
+    <string name="btn_6"><font color="#FF000000">6</font></string>
+    <string name="btn_7"><font color="#FF000000">7</font></string>
+    <string name="btn_8"><font color="#FF000000">8</font></string>
+    <string name="btn_9"><font color="#FF000000">9</font></string>
+    <string name="btn_010"><font color="#FF000000">010</font></string>
+    <string name="btn_Del"><font color="#FF000000">DEL</font></string>
+    <string name="btnKLogDel">로그삭제</string>
+    <string name="rx">RX</string>
+    <string name="item_title">item title</string>
+    <string name="trueText">true</string>
+    <string name="chargerIdSaveFail">충전소 ID를 입력하세요"</string>
+    <string name="configSaveTitle">환경 설정 저장</string>
+    <string name="configSaveSuccess">수정 내용 저장 성공</string>
+    <string name="configSaveYesNo">수정하신 내용을 저장하시겠습니까?</string>
+    <string name="configSaveCancel">수정 내용 취소</string>
+    <string name="txtMemberFail"><font color="#C90000">등록된 회원이</font><font color="#000000"> 아닙니다.</font></string>
+    <string name="stoppingMessage"><font color='#000000'>충전 종료 중</font></string>
+    <string name="txtStopConfirm"> OCPP Mode</string>
+    <string name="txtCurrentTest">전력량계 테스트</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="leftConnector">좌측 커넥터</string>
+    <string name="rightConnector">우측 커넥터</string>
+    <string name="chargeUnitFormat">충전단가: %1$s 원</string>
+
+    <string name="qrMessage">간편 QR 결제</string>
+    <string name="qrInfoMessage">QR코드를 스캔하여\n충전이 가능합니다.</string>
+    <string name="memberMessage">회원 충전</string>
+    <string name="memberInfoMessage">회원카드를 태그하여\n간편하게 충전이 가능합니다.</string>
+    <string name="memChargingUnit">충전단가:</string>
+    <string name="nomemberMessage">비회원 충전</string>
+    <string name="nomemberInfoMessage">카드결제를 통해\n간편하게 충전이 가능합니다.</string>
+    <string name="socMessage">SOC 설정</string>
+    <string name="minus10Percent">-10%</string>
+    <string name="plus10Percent">+10%</string>
+    <string name="socFull">FULL(MAX 80%)</string>
+    <string name="btnConfirm">확인</string>
+    <string name="btnCancel">취소</string>
+    <string name="socGuideMessage">좌우로 움직여\n목표 SOC를 설정하세요.</string>
+    <string name="memberCardTaggingMessage">회원카드 태깅</string>
+    <string name="memberWaitingMessage">회원 확인 중</string>
+    <string name="creditCardTaggingMessage">신용 카드 결제</string>
+    <string name="creditCardTaggingSubMessage">선결제로 진행되며, 충전 후 사용한 금액만큼 최종 결제됩니다.\n나머지 금액은 자동 취소됩니다.</string>
+    <string name="creditCardWaitingMessage">결제카드를 리더기에 삽입하여 주세요.\n 결제 진행 중입니다. 잠시만 기다려 주세요.</string>
+    <string name="errorMessage">SYSTEM ERROR MESSAGE</string>
+    <string name="plugWaitMessage">차량에 <font color='#2E4298'>커넥터</font>를 연결 주세요</string>
+    <string name="plugStartMessage"><font color='#2E4298'>충전</font>이 잠시 후, 시작됩니다. </string>
+    <string name="chargeAmount">충전금액</string>
+    <string name="chargeOfAmount">충전 사용량</string>
+    <string name="rechargeUnitPrice">결제 금액</string>
+    <string name="moneyUnit"> 원</string>
+    <string name="powerUnit"> kW</string>
+    <string name="powerAmountUnit"> kWh</string>
+    <string name="chargerSpeed">충전 속도 : </string>
+    <string name="btn_sms"><font color="#FF000000">충전 정보\n문자서비스</font></string>
+    <string name="btn_stop"><font color="#FF000000">충전 중지</font></string>
+    <string name="screenChangeMessage">초 후 화면 자동 전환</string>
+    <string name="FinishNotification"><font color="#2E4298"> 충전이</font> 완료되었습니다.</string>
+    <string name="txtHttpURL">초기 접속 URL</string>
+    <string name="txtSigned"> Signed(WSS/WS)</string>
+    <string name="payMode">결제모드</string>
+    <string name="mode">인증모드</string>
+    <string name="authSelectMessage">인증 방법 선택</string>
+    <string name="etcInfo">기타정보</string>
+    <string name="limitSoc">최대 충전량: </string>
+    <string name="chargeInfo">충전정보</string>
+    <string name="connectorDisconnectMessage"><font color="#FF000000">커넥터를 분리하여 정리해 주세요.</font></string>
+    <string name="EVCheckMessage">차량과 통신 확인 중</string>
+
+</resources>

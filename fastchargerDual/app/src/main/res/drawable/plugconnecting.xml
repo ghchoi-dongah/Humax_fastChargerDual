@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:drawable="@drawable/plugwait1"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/plugwait2"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/plugwait3"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/plugwait4"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/plugwait5"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/plugwait6"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/plugwait7"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/plugwait8"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/plugwait9"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/plugwait10"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/plugwait11"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/plugwait12"
+        android:duration="200" />
+</animation-list>
