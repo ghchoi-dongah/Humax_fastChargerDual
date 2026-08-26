@@ -193,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
         // 1. charger configuration, ConfigurationKey read */
         chargerConfiguration = new ChargerConfiguration();
         chargerConfiguration.onLoadConfiguration();
-        textViewVersionValue.setText("VER-DEVS " + chargerConfiguration.getFirmwareVersion() + " | ");
+        textViewVersionValue.setText("VER-" + GlobalVariables.VERSION + " | ");
 
         // 2. fragment change management */
         fragmentChange = new FragmentChange();
