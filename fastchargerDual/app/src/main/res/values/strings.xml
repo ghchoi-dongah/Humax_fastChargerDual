@@ -152,7 +152,7 @@
     <string name="memberCardTaggingMessage">회원 카드 태깅</string>
     <string name="memberWaitingMessage">회원 확인 중</string>
     <string name="creditCardTaggingMessage">신용 카드 결제</string>
-    <string name="creditCardTaggingSubMessage">선결제로 진행되며, 충전 후 사용한 금액만큼 최종 결제됩니다.\n나머지 금액은 자동 취소됩니다.</string>
+    <string name="creditCardTaggingSubMessage">선결제로 진행되며,\n충전 후 사용한 금액만큼 최종 결제됩니다.\n나머지 금액은 자동 취소됩니다.</string>
     <string name="creditCardWaitingMessage">결제카드를 리더기에 삽입하여 주세요.\n 결제 진행 중입니다. 잠시만 기다려 주세요.</string>
     <string name="errorMessage">SYSTEM ERROR MESSAGE</string>
     <string name="plugWaitMessage">차량에 <font color='#2E4298'>커넥터</font>를 연결 주세요</string>

@@ -2,9 +2,17 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="1024dp"
+    android:layout_width="512dp"
     android:layout_height="652dp"
     tools:context=".pages.CreditCardFragment">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/layer_list_rect"
+        tools:layout_editor_absoluteX="5dp"
+        tools:layout_editor_absoluteY="5dp" />
 
     <TextView
         android:id="@+id/txtCreditMessage"
@@ -21,7 +29,7 @@
         android:id="@+id/txtPriceTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="20dp"
         android:layout_marginStart="60dp"
         android:text="@string/priceMessage"
         android:textSize="36sp"
@@ -37,7 +45,7 @@
         android:gravity="right|center"
         android:layout_marginStart="20dp"
         android:text="0"
-        android:textSize="40sp"
+        android:textSize="36sp"
         android:textColor="@color/black"
         app:layout_constraintLeft_toRightOf="@id/txtPriceTitle"
         app:layout_constraintTop_toTopOf="@id/txtPriceTitle"
@@ -50,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:text="@string/payUnitMessage"
-        android:textSize="34sp"
+        android:textSize="36sp"
         android:textColor="@color/black"
         app:layout_constraintLeft_toRightOf="@id/txtInputAmt"
         app:layout_constraintBottom_toBottomOf="@id/txtInputAmt" />
@@ -70,17 +78,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintLeft_toLeftOf="@+id/txtPriceTitle"
         app:layout_constraintTop_toBottomOf="@id/txtInputAmt"
         tools:ignore="RtlHardcoded" />
 
     <Button
         android:id="@+id/btn500"
-        android:layout_width="242dp"
-        android:layout_height="102dp"
-        android:layout_marginStart="124dp"
-        android:layout_marginTop="70dp"
+        android:layout_width="220dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="50dp"
         android:text="@string/btn_500"
         android:textSize="32sp"
         android:tag="500"
@@ -91,9 +99,9 @@
 
     <Button
         android:id="@+id/btn1000"
-        android:layout_width="242dp"
-        android:layout_height="102dp"
-        android:layout_marginStart="25dp"
+        android:layout_width="220dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="16dp"
         android:text="@string/btn_1000"
         android:textSize="32sp"
         android:tag="1000"
@@ -104,48 +112,48 @@
 
     <Button
         android:id="@+id/btn5000"
-        android:layout_width="242dp"
-        android:layout_height="102dp"
-        android:layout_marginStart="25dp"
+        android:layout_width="220dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="15dp"
         android:text="@string/btn_5000"
         android:textSize="32sp"
         android:tag="5000"
-        android:background="@drawable/selector_default_btn"
-        app:backgroundTint="@null"
-        app:layout_constraintLeft_toRightOf="@id/btn1000"
-        app:layout_constraintTop_toTopOf="@id/btn1000" />
-
-    <Button
-        android:id="@+id/btn10000"
-        android:layout_width="242dp"
-        android:layout_height="102dp"
-        android:layout_marginTop="15dp"
-        android:text="@string/btn_10000"
-        android:textSize="32sp"
-        android:tag="10000"
         android:background="@drawable/selector_default_btn"
         app:backgroundTint="@null"
         app:layout_constraintLeft_toLeftOf="@id/btn500"
         app:layout_constraintTop_toBottomOf="@id/btn500" />
 
     <Button
+        android:id="@+id/btn10000"
+        android:layout_width="220dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/btn_10000"
+        android:textSize="32sp"
+        android:tag="10000"
+        android:background="@drawable/selector_default_btn"
+        app:backgroundTint="@null"
+        app:layout_constraintLeft_toRightOf="@id/btn5000"
+        app:layout_constraintTop_toTopOf="@id/btn5000" />
+
+    <Button
         android:id="@+id/btn20000"
-        android:layout_width="242dp"
-        android:layout_height="102dp"
-        android:layout_marginStart="25dp"
+        android:layout_width="220dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="15dp"
         android:text="@string/btn_20000"
         android:textSize="32sp"
         android:tag="20000"
         android:background="@drawable/selector_default_btn"
         app:backgroundTint="@null"
-        app:layout_constraintLeft_toRightOf="@id/btn10000"
-        app:layout_constraintTop_toTopOf="@id/btn10000" />
+        app:layout_constraintLeft_toLeftOf="@id/btn5000"
+        app:layout_constraintTop_toBottomOf="@id/btn5000" />
 
     <Button
         android:id="@+id/btn50000"
-        android:layout_width="242dp"
-        android:layout_height="102dp"
-        android:layout_marginStart="25dp"
+        android:layout_width="220dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="16dp"
         android:text="@string/btn_Full"
         android:textSize="32sp"
         android:tag="50000"
@@ -158,20 +166,19 @@
         android:id="@+id/btnClear"
         android:layout_width="220dp"
         android:layout_height="100dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="30dp"
         android:text="@string/btn_clear"
         android:textSize="32sp"
         android:background="@drawable/shape_card_bg"
         app:backgroundTint="@null"
-        app:layout_constraintLeft_toRightOf="@id/viewLine"
-        app:layout_constraintTop_toBottomOf="@id/txtCreditMessage" />
+        app:layout_constraintLeft_toLeftOf="@id/btn20000"
+        app:layout_constraintTop_toBottomOf="@id/btn20000" />
 
     <Button
         android:id="@+id/btnPay"
         android:layout_width="220dp"
         android:layout_height="100dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="16dp"
         android:text="@string/btn_pay"
         android:textSize="32sp"
         android:background="@drawable/shape_btn_blue"

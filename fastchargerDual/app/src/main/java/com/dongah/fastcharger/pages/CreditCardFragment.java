@@ -47,6 +47,7 @@ public class CreditCardFragment extends Fragment implements View.OnClickListener
     private String mParam2;
     private int mChannel;
 
+    int TIME_MAX = 60;
     int cnt = 0;
     ChargingCurrentData chargingCurrentData;
     Button btn500, btn1000, btn5000, btn10000, btn20000, btnClear, btn50000, btnPay;
@@ -137,7 +138,7 @@ public class CreditCardFragment extends Fragment implements View.OnClickListener
                         @Override
                         public void run() {
                             cnt++;
-                            if (Objects.equals(cnt, 60)) {
+                            if (cnt > TIME_MAX) {
                                 countHandler.removeCallbacks(countRunnable);
                                 countHandler.removeCallbacksAndMessages(null);
                                 countHandler.removeMessages(0);
@@ -153,7 +154,7 @@ public class CreditCardFragment extends Fragment implements View.OnClickListener
 
             chargingCurrentData = ((MainActivity) MainActivity.mContext).getChargingCurrentData(mChannel);
         } catch (Exception e) {
-            logger.error("CreditCardFragment onViewCreated : {}", e.getMessage());
+            logger.error("onViewCreated error : {}", e.getMessage());
         }
     }
 
@@ -188,7 +189,7 @@ public class CreditCardFragment extends Fragment implements View.OnClickListener
                 ((MainActivity) MainActivity.mContext).getFragmentChange().onFragmentChange(mChannel, UiSeq.CREDIT_CARD_WAIT, "CREDIT_CARD_WAIT", null);
             }
         } catch (Exception e) {
-            logger.error("CreditCardFragment onClick : {}", e.getMessage());
+            logger.error("onClick error : {}", e.getMessage());
         }
     }
 
@@ -197,17 +198,26 @@ public class CreditCardFragment extends Fragment implements View.OnClickListener
     }
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        try {
+            if (countHandler != null) {
+                countHandler.removeCallbacks(countRunnable);
+                countHandler.removeCallbacksAndMessages(null);
+                countHandler.removeMessages(0);
+            }
+
+            SharedModel sharedModel = new ViewModelProvider(requireActivity()).get(SharedModel.class);
+            String[] requestStrings = new String[1];
+            requestStrings[0] = "0";
+            sharedModel.setMutableLiveData(requestStrings);
+        } catch (Exception e) {
+            logger.error("onDestroyView error : {}", e.getMessage(), e);
+        }
+    }
+
+    @Override
     public void onDetach() {
         super.onDetach();
-        if (countHandler != null) {
-            countHandler.removeCallbacks(countRunnable);
-            countHandler.removeCallbacksAndMessages(null);
-            countHandler.removeMessages(0);
-        }
-
-        SharedModel sharedModel = new ViewModelProvider(requireActivity()).get(SharedModel.class);
-        String[] requestStrings = new String[1];
-        requestStrings[0] = "0";
-        sharedModel.setMutableLiveData(requestStrings);
     }
 }

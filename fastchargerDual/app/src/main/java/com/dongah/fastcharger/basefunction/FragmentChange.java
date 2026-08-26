@@ -103,7 +103,7 @@ public class FragmentChange {
                 break;
             case MEMBER_CARD_WAIT:
                 try {
-                    onFrameLayoutChange(true);
+                    onFrameLayoutChange(false);
                     MemberCardWaitFragment memberCardWaitFragment = new MemberCardWaitFragment();
                     memberCardWaitFragment.setArguments(bundle);
                     transaction.replace(frameLayoutId, memberCardWaitFragment, "MEMBER_CARD_WAIT");
@@ -114,11 +114,10 @@ public class FragmentChange {
                 break;
             case CREDIT_CARD:
                 try {
-                    onFrameLayoutChange(true);
-                    frameLayoutId = R.id.fullScreen;
+                    onFrameLayoutChange(false);
                     CreditCardFragment creditCardFragment = new CreditCardFragment();
-                    transaction.replace(frameLayoutId, creditCardFragment, "CREDIT_CARD");
                     creditCardFragment.setArguments(bundle);
+                    transaction.replace(frameLayoutId, creditCardFragment, "CREDIT_CARD");
                     transaction.commit();
                 } catch (Exception e) {
                     logger.error("onFragmentChange error : CREDIT_CARD {} ", e.getMessage());
@@ -126,11 +125,10 @@ public class FragmentChange {
                 break;
             case CREDIT_CARD_WAIT:
                 try {
-                    onFrameLayoutChange(true);
-                    frameLayoutId = R.id.fullScreen;
+                    onFrameLayoutChange(false);
                     CreditCardWaitFragment creditCardWaitFragment = new CreditCardWaitFragment();
-                    transaction.replace(frameLayoutId, creditCardWaitFragment, "CREDIT_CARD_WAIT");
                     creditCardWaitFragment.setArguments(bundle);
+                    transaction.replace(frameLayoutId, creditCardWaitFragment, "CREDIT_CARD_WAIT");
                     transaction.commit();
                 } catch (Exception e) {
                     logger.error("onFragmentChange error : CREDIT_CARD_WAIT {}", e.getMessage());

@@ -46,6 +46,7 @@ public class CreditCardWaitFragment extends Fragment {
     private String mParam2;
     private int mChannel;
 
+    int TIME_MAX = 45;
     int cnt = 0;
     TextView txtInputAmt;
     ImageView imgCreditCardTagging;
@@ -130,7 +131,7 @@ public class CreditCardWaitFragment extends Fragment {
                         @Override
                         public void run() {
                             cnt++;
-                            if (Objects.equals(cnt, 45)) {
+                            if (cnt > TIME_MAX) {
                                 countHandler.removeCallbacks(countRunnable);
                                 countHandler.removeCallbacksAndMessages(null);
                                 countHandler.removeMessages(0);
@@ -152,7 +153,7 @@ public class CreditCardWaitFragment extends Fragment {
             // 신용 카드 결제
             onTls3800Payment();
         } catch (Exception e) {
-            logger.error(" CreditCardWaitFragment error : {}", e.getMessage());
+            logger.error("onViewCreated error : {}", e.getMessage());
         }
     }
 
@@ -170,14 +171,13 @@ public class CreditCardWaitFragment extends Fragment {
                 }
             }, 500);
         } catch (Exception e) {
-            logger.error(" onTls3800Payment error : {}", e.getMessage());
+            logger.error("onTls3800Payment error : {}", e.getMessage());
         }
     }
 
-
     @Override
-    public void onDetach() {
-        super.onDetach();
+    public void onDestroyView() {
+        super.onDestroyView();
         try {
             if (countHandler != null) {
                 countHandler.removeCallbacks(countRunnable);
@@ -194,12 +194,15 @@ public class CreditCardWaitFragment extends Fragment {
                 animationDrawable.stop();
                 animationDrawable = null;
             }
-
             //결제 단말기 초기화
             tls3800.onTLS3800Request(mChannel, TLS3800.CMD_TX_RETURN, 0);
-
         } catch (Exception e) {
-            logger.error("MemberCardWaitFragment onDetach : {} ", e.getMessage());
+            logger.error("onDestroyView error : {}", e.getMessage(), e);
         }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
     }
 }
