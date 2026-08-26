@@ -133,14 +133,15 @@
     <string name="leftConnector">좌측 커넥터</string>
     <string name="rightConnector">우측 커넥터</string>
     <string name="chargeUnitFormat">충전단가: %1$s 원</string>
+    <string name="price">%1$,.0f원/kWh</string>
 
     <string name="qrMessage">간편 QR 결제</string>
-    <string name="qrInfoMessage">QR코드를 스캔하여\n충전이 가능합니다.</string>
+    <string name="qrInfoMessage">QR코드를 스캔하여 충전</string>
     <string name="memberMessage">회원 충전</string>
-    <string name="memberInfoMessage">회원카드를 태그하여\n간편하게 충전이 가능합니다.</string>
+    <string name="memberInfoMessage">회원카드를 태그하여 충전</string>
     <string name="memChargingUnit">충전단가:</string>
     <string name="nomemberMessage">비회원 충전</string>
-    <string name="nomemberInfoMessage">카드결제를 통해\n간편하게 충전이 가능합니다.</string>
+    <string name="nomemberInfoMessage">카드결제를 통해 충전</string>
     <string name="socMessage">SOC 설정</string>
     <string name="minus10Percent">-10%</string>
     <string name="plus10Percent">+10%</string>

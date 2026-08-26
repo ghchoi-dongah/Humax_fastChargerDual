@@ -142,11 +142,10 @@ public class AuthSelectFragment extends Fragment implements View.OnClickListener
         //사용 단가 갖고 오기
         Set<String> userTypes = new HashSet<>(Arrays.asList("A", "B"));
         Map<String, Integer> unitPrices = onFindUnitPrices(userTypes);
-        textViewMemberUnitInput.setText(getString(R.string.chargeUnitFormat, String.valueOf(unitPrices.getOrDefault("A", 0))));
-        textViewNoMemberUnitInput.setText(getString(R.string.chargeUnitFormat, String.valueOf(unitPrices.getOrDefault("B", 0))));
-
         aUnitPrice = unitPrices.getOrDefault("A", 0);
         bUnitPrice = unitPrices.getOrDefault("B", 0);
+        textViewMemberUnitInput.setText(getString(R.string.price, aUnitPrice));
+        textViewNoMemberUnitInput.setText(getString(R.string.price, bUnitPrice));
 
         try {
             if (!TextUtils.isEmpty(chargerConfiguration.getChargerId())) {
@@ -184,7 +183,7 @@ public class AuthSelectFragment extends Fragment implements View.OnClickListener
             }, 60000);
 
         }catch (Exception e) {
-            logger.error(" AuthSelectFragment error : {}", e.getMessage());
+            logger.error("onViewCreated error : {}", e.getMessage());
         }
     }
 
@@ -219,7 +218,7 @@ public class AuthSelectFragment extends Fragment implements View.OnClickListener
                 ((MainActivity) MainActivity.mContext).getFragmentChange().onFragmentChange(mChannel,UiSeq.QR_CODE, "QR_CODE", null);
             }
         } catch (Exception e) {
-            logger.error("AuthSelectFragment onClick error : {}", e.getMessage());
+            logger.error("onClick error : {}", e.getMessage());
         }
     }
 
@@ -249,7 +248,7 @@ public class AuthSelectFragment extends Fragment implements View.OnClickListener
                 uiCheckHandler = null;
             }
         } catch (Exception e) {
-            logger.error("AuthSelectFragment onDetach error : {}", e.getMessage());
+            logger.error("onDetach error : {}", e.getMessage());
         }
     }
 

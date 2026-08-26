@@ -64,32 +64,16 @@ public class FragmentChange {
                     transaction.replace(frameLayoutId, initFragment, sendText);
                     initFragment.setArguments(bundle);
                     transaction.commit();
-//                    onFrameLayoutChange(false);
-//                    if (channel == 0){
-//                        bundle.putInt("CHANNEL", 0);
-//                        LeftInitFragment leftInitFragment = new LeftInitFragment();
-//                        transaction.replace(frameLayoutId, leftInitFragment, sendText);
-//                        leftInitFragment.setArguments(bundle);
-//                    } else {
-//                        bundle.putInt("CHANNEL", 1);
-//                        RightInitFragment rightInitFragment = new RightInitFragment();
-//                        transaction.replace(frameLayoutId, rightInitFragment, sendText);
-//                        rightInitFragment.setArguments(bundle);
-//                    }
-//                    InitFragment initFragment = new InitFragment();
-//                    initFragment.setArguments(bundle);
-//                    transaction.replace(frameLayoutId, initFragment, sendText);
-//                    transaction.commit();
                 } catch (Exception e) {
                     logger.error("onFragmentChange error : INIT {}", e.getMessage());
                 }
                 break;
             case AUTH_SELECT:
                 try {
-                    onFrameLayoutChange(true);
+                    onFrameLayoutChange(false);
                     AuthSelectFragment authSelectFragment = new AuthSelectFragment();
-                    transaction.replace(R.id.fullScreen, authSelectFragment, "AUTH_SELECT");
                     authSelectFragment.setArguments(bundle);
+                    transaction.replace(frameLayoutId, authSelectFragment, "AUTH_SELECT");
                     transaction.commit();
                 } catch (Exception e) {
                     logger.error("onFragmentChange error : AUTH_SELECT {}", e.getMessage());
