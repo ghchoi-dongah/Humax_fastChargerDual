@@ -137,11 +137,10 @@ public class FragmentChange {
             case PLUG_CHECK:
             case CONNECT_CHECK:
                 try {
-                    onFrameLayoutChange(true);
-                    frameLayoutId = R.id.fullScreen;
+                    onFrameLayoutChange(false);
                     PlugWaitFragment plugWaitFragment = new PlugWaitFragment();
-                    transaction.replace(frameLayoutId, plugWaitFragment, "PLUG_CHECK");
                     plugWaitFragment.setArguments(bundle);
+                    transaction.replace(frameLayoutId, plugWaitFragment, "PLUG_CHECK");
                     transaction.commit();
                 } catch (Exception e) {
                     logger.error("onFragmentChange error : PLUG_CHECK {}", e.getMessage());

@@ -130,7 +130,7 @@ public class PlugWaitFragment extends Fragment {
                         @Override
                         public void run() {
                             cnt++;
-                            int timeout = GlobalVariables.getConnectionTimeOut();
+                            int timeout = GlobalVariables.getConnectionTimeOut() == 0 ? 60 : GlobalVariables.getConnectionTimeOut();
                             if (cnt >= timeout) {
                                 countHandler.removeCallbacks(countRunnable);
                                 countHandler.removeCallbacksAndMessages(null);
@@ -178,7 +178,7 @@ public class PlugWaitFragment extends Fragment {
                 }
             });
         } catch (Exception e) {
-            logger.error("PlugWaitFragment onViewCreated : {}", e.getMessage());
+            logger.error("onViewCreated error : {}", e.getMessage());
         }
     }
 
@@ -191,8 +191,8 @@ public class PlugWaitFragment extends Fragment {
     }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
+    public void onDestroyView() {
+        super.onDestroyView();
         try {
             stopAviAnim();
             requestStrings[0] = String.valueOf(mChannel);
@@ -203,7 +203,12 @@ public class PlugWaitFragment extends Fragment {
                 countHandler.removeMessages(0);
             }
         } catch (Exception e) {
-            logger.error("PlugWaitFragment onDetach : {}", e.getMessage());
+            logger.error("onDestroyView error : {}", e.getMessage(), e);
         }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
     }
 }
