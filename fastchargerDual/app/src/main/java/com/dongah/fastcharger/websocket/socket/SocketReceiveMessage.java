@@ -709,7 +709,9 @@ public class SocketReceiveMessage extends JSONCommunicator implements SocketInte
                                         boolean chk;
                                         File file = new File(GlobalVariables.getRootPath() + File.separator + GlobalVariables.UNIT_FILE_NAME);
 
-                                        if (file.exists() && fileManagement.countFileRows(file) >= 2 ) chk = file.delete();
+//                                        if (file.exists() && fileManagement.countFileRows(file) >= 2 ) chk = file.delete();
+                                        if (file.exists() && (Objects.equals(GlobalVariables.getHumaxUserType(), "A")
+                                                || fileManagement.countFileRows(file) >= 2)) chk = file.delete();
                                         chk = fileManagement.stringToFileSave(GlobalVariables.getRootPath(), GlobalVariables.UNIT_FILE_NAME, dataJson.toString(), true);
                                         if (Objects.equals(GlobalVariables.getHumaxUserType(), "A")) {
                                             GlobalVariables.setHumaxUserType("B");
