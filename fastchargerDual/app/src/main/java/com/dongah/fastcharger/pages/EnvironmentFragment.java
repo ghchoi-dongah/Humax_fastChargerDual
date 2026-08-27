@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.dongah.fastcharger.MainActivity;
 import com.dongah.fastcharger.R;
+import com.dongah.fastcharger.basefunction.GlobalVariables;
 import com.dongah.fastcharger.basefunction.UiSeq;
 import com.dongah.fastcharger.utils.SharedModel;
 
@@ -124,8 +125,10 @@ public class EnvironmentFragment extends Fragment implements View.OnClickListene
                     break;
                 default:
                     ((MainActivity) MainActivity.mContext).getFragmentChange().onFrameLayoutChange(false);
-                    ((MainActivity) MainActivity.mContext).getClassUiProcess(mChannel).setUiSeq(UiSeq.INIT);
-                    ((MainActivity) MainActivity.mContext).getFragmentChange().onFragmentChange(mChannel,UiSeq.INIT, "INIT", null);
+                    for (int i = 0; i < GlobalVariables.maxChannel; i++) {
+                        ((MainActivity) MainActivity.mContext).getClassUiProcess(i).setUiSeq(UiSeq.INIT);
+                        ((MainActivity) MainActivity.mContext).getFragmentChange().onFragmentChange(i,UiSeq.INIT, "INIT", null);
+                    }
                     break;
             }
         } else if (Objects.equals(getId, R.id.btnMember)) {

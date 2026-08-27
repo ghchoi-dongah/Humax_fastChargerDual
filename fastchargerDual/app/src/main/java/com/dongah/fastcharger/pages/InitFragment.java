@@ -73,15 +73,17 @@ public class InitFragment extends Fragment implements View.OnClickListener {
     private String mParam2;
     private int mChannel;
 
-    ChargerConfiguration chargerConfiguration;
-    ChargingCurrentData chargingCurrentData;
     Animation animBlink;
     View viewCircle;
     TextView textViewConnector, textViewInitMessage, txtMemberUnitInput;
-    ImageView btnQr, imageViewCar;
+    ImageView imageViewCar;
     SharedModel sharedModel;
     String[] requestStrings = new String[1];
     Handler qrHandler;
+
+    MainActivity activity;
+    ChargerConfiguration chargerConfiguration;
+    ChargingCurrentData chargingCurrentData;
 
     public InitFragment() {
         // Required empty public constructor
@@ -120,6 +122,10 @@ public class InitFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_init, container, false);
+        activity = (MainActivity) MainActivity.mContext;
+        chargerConfiguration = activity.getChargerConfiguration();
+        chargingCurrentData = activity.getChargingCurrentData(mChannel);
+
         animBlink = AnimationUtils.loadAnimation(getActivity(), R.anim.blink);
         viewCircle = view.findViewById(R.id.viewCircle);
         viewCircle.setOnClickListener(this);
@@ -138,28 +144,8 @@ public class InitFragment extends Fragment implements View.OnClickListener {
                 textViewConnector.setText(R.string.rightConnector);
             }
         } catch (Exception e) {
-            logger.error("InitFragment onCreateView error : {}", e.getMessage());
+            logger.error("onCreateView error : {}", e.getMessage());
         }
-
-
-        //Qr
-//        qrHandler = new Handler();
-//        qrHandler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                try {
-//                    chargerConfiguration = ((MainActivity) getActivity()).getChargerConfiguration();
-//                    if (!TextUtils.isEmpty(chargerConfiguration.getChargerId())) {
-//                        BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-//                        Bitmap bitmap = barcodeEncoder.encodeBitmap("/" + chargerConfiguration.getChargerId() + "/0" + (mChannel + 1),
-//                                BarcodeFormat.QR_CODE, 600, 600);
-//                        btnQr.setImageBitmap(toGrayscale(bitmap));
-//                    }
-//                } catch (Exception e) {
-//                    logger.error("QrCode : {}", e.getMessage());
-//                }
-//            }
-//        }, 10000);
 
         return view;
     }
@@ -170,46 +156,14 @@ public class InitFragment extends Fragment implements View.OnClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         try {
-            ((MainActivity) MainActivity.mContext).getChargingCurrentData(mChannel).setConnectorId(mChannel+1);
             //사용 단가 갖고 오기
             Set<String> userTypes = new HashSet<>(Arrays.asList("A", "B"));
             Map<String, Integer> unitPrices = onFindUnitPrices(userTypes);
-            chargingCurrentData = ((MainActivity) getActivity()).getChargingCurrentData(mChannel);
-            txtMemberUnitInput.setText(getString(R.string.chargeUnitFormat, String.valueOf(unitPrices.getOrDefault("A", 0))));
-            chargingCurrentData.setPowerUnitPrice(Double.parseDouble(String.valueOf(unitPrices.getOrDefault("A", 0))));
-
-
-            sharedModel = new ViewModelProvider(requireActivity()).get(SharedModel.class);
-            sharedModel.getLiveData().observe(getViewLifecycleOwner(), new Observer<String[]>() {
-                @Override
-                public void onChanged(String[] strings) {
-                    // UiSeq = MEMBER_CARD(4), MEMBER_CARD_WAIT(5), CREDIT_CARD(6), CREDIT_CARD_WAIT(7) 일때
-                    try {
-                        int otherChannel = Integer.parseInt(strings[0]);
-                        UiSeq otherUiSeq = ((MainActivity) getActivity()).getClassUiProcess(otherChannel).getUiSeq();
-                        switch (otherUiSeq) {
-                            case MEMBER_CARD:
-                            case MEMBER_CARD_WAIT:
-                            case CREDIT_CARD:
-                            case CREDIT_CARD_WAIT:
-//                                imageCheck.setVisibility(View.VISIBLE);
-//                                btnQr.setVisibility(View.INVISIBLE);
-//                                txtInitMessage.setVisibility(View.INVISIBLE);
-                                break;
-                            default:
-//                                imageCheck.setVisibility(View.INVISIBLE);
-//                                btnQr.setVisibility(View.VISIBLE);
-//                                txtInitMessage.setVisibility(View.VISIBLE);
-
-                                break;
-                        }
-                    } catch (Exception e) {
-                        logger.error("img check error {} : ", e.getMessage());
-                    }
-                }
-            });
+            int price = unitPrices.getOrDefault("A", 0);
+            txtMemberUnitInput.setText(getString(R.string.chargeUnitFormat, String.valueOf(price)));
+            chargingCurrentData.setPowerUnitPrice(Double.parseDouble(String.valueOf(price)));
         } catch (Exception e) {
-            logger.error("InitFragment onViewCreated : {}", e.getMessage());
+            logger.error("onViewCreated error : {}", e.getMessage());
         }
     }
 
@@ -222,13 +176,11 @@ public class InitFragment extends Fragment implements View.OnClickListener {
             // 초기 화면 으로 전환이 된 경우, current data clear
             chargingCurrentData.onCurrentDataClear();
             chargingCurrentData.setConnectorId(mChannel + 1);
+            chargingCurrentData.setChargerPointType(ChargerPointType.COMBO);
 
             int id = v.getId();
             //* page change*/
-            ((MainActivity) getActivity()).getChargingCurrentData(mChannel).setChargerPointType(ChargerPointType.COMBO);
-            ((MainActivity) getActivity()).getChargingCurrentData(mChannel).setConnectorId(mChannel + 1);
-
-            if (Objects.equals(((MainActivity) getActivity()).getChargerConfiguration().getAuthMode(), "0")) {
+            if (Objects.equals(chargerConfiguration.getAuthMode(), "0")) {
                 if (!onUnitPrice()) {
                     Toast.makeText(getActivity(), "단가 정보가 없습니다. \n잠시 후, 충전하세요!", Toast.LENGTH_SHORT).show();
                     return;
@@ -256,7 +208,7 @@ public class InitFragment extends Fragment implements View.OnClickListener {
                 ((MainActivity) getActivity()).getFragmentChange().onFragmentChange(mChannel, UiSeq.PLUG_CHECK, "PLUG_CHECK", null);
             }
         } catch (Exception e) {
-            logger.error("InitFragment onClick error : {}", e.getMessage());
+            logger.error("onClick error : {}", e.getMessage());
         }
     }
 
@@ -275,24 +227,8 @@ public class InitFragment extends Fragment implements View.OnClickListener {
             requestStrings[0] = String.valueOf(mChannel);
             sharedModel.setMutableLiveData(requestStrings);
         } catch (Exception e) {
-            logger.error("init onDetach error : {}", e.getMessage());
+            logger.error("onDetach error : {}", e.getMessage());
         }
-    }
-
-    public Bitmap toGrayscale(Bitmap bmpOriginal) {
-        int width, height;
-        height = bmpOriginal.getHeight();
-        width = bmpOriginal.getWidth();
-
-        Bitmap bmpGrayscale = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-        Canvas c = new Canvas(bmpGrayscale);
-        Paint paint = new Paint();
-        ColorMatrix cm = new ColorMatrix();
-        cm.setSaturation(0);
-        ColorMatrixColorFilter f = new ColorMatrixColorFilter(cm);
-        paint.setColorFilter(f);
-        c.drawBitmap(bmpOriginal, 0, 0, paint);
-        return bmpGrayscale;
     }
 
     private boolean onUnitPrice() {

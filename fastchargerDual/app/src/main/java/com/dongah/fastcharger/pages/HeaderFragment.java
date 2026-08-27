@@ -97,8 +97,10 @@ public class HeaderFragment extends Fragment implements View.OnClickListener {
             public void onClick(View v) {
                 if (clickedCnt > 8) {
                     try {
-                        boolean chkUiSeq = ((MainActivity) MainActivity.mContext).getClassUiProcess(0).getUiSeq() == UiSeq.INIT &&
-                                ((MainActivity) MainActivity.mContext).getClassUiProcess(1).getUiSeq() == UiSeq.INIT;
+                        UiSeq ui0 = ((MainActivity) MainActivity.mContext).getClassUiProcess(0).getUiSeq();
+                        UiSeq ui1 = ((MainActivity) MainActivity.mContext).getClassUiProcess(1).getUiSeq();
+
+                        boolean chkUiSeq = (ui0 == UiSeq.INIT || ui0 == UiSeq.FAULT) && (ui1 == UiSeq.INIT || ui1 == UiSeq.FAULT);
                         if (chkUiSeq) {
                             ((MainActivity) MainActivity.mContext).runOnUiThread(new Runnable() {
                                 @Override

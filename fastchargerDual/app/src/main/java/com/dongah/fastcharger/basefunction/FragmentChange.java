@@ -81,10 +81,10 @@ public class FragmentChange {
                 break;
             case SOC:
                 try {
-                    onFrameLayoutChange(true);
+                    onFrameLayoutChange(false);
                     SocFragment socFragment = new SocFragment();
-                    transaction.replace(R.id.fullScreen, socFragment, "SOC");
                     socFragment.setArguments(bundle);
+                    transaction.replace(frameLayoutId, socFragment, "SOC");
                     transaction.commit();
                 } catch (Exception e) {
                     logger.error("onFragmentChange-socFragment error :  {}", e.getMessage());
@@ -151,13 +151,13 @@ public class FragmentChange {
                     onFrameLayoutChange(Objects.equals(type, "full"));
                     if (Objects.equals(type, "full")) {
                         ChargingFragment chargingFragment = new ChargingFragment();
-                        transaction.replace(R.id.fullScreen, chargingFragment, "CHARGING");
                         chargingFragment.setArguments(bundle);
+                        transaction.replace(R.id.fullScreen, chargingFragment, "CHARGING");
                     } else if (Objects.equals(type, "small")) {
 //                        onRemoveFragment(channel, sendText);
                         ChargingResizeFragment chargingResizeFragment = new ChargingResizeFragment();
-                        transaction.replace(frameLayoutId, chargingResizeFragment, "CHARGING");
                         chargingResizeFragment.setArguments(bundle);
+                        transaction.replace(frameLayoutId, chargingResizeFragment, "CHARGING");
                     }
                     transaction.commit();
                 } catch (Exception e) {
@@ -168,8 +168,8 @@ public class FragmentChange {
                 try {
                     onFrameLayoutChange(false);
                     MessageYesNoFragment messageYesNoFragment = new MessageYesNoFragment();
-                    transaction.replace(frameLayoutId, messageYesNoFragment, "CHARGING_STOP_MESSAGE");
                     messageYesNoFragment.setArguments(bundle);
+                    transaction.replace(frameLayoutId, messageYesNoFragment, "CHARGING_STOP_MESSAGE");
                     transaction.commit();
                 } catch (Exception e) {
                     logger.error("onFragmentChange error : CHARGING_STOP_MESSAGE {} ", e.getMessage());
@@ -179,8 +179,8 @@ public class FragmentChange {
                 try {
                     onFrameLayoutChange(false);
                     ChargingFinishResizeFragment chargingFinishResizeFragment = new ChargingFinishResizeFragment();
-                    transaction.replace(frameLayoutId, chargingFinishResizeFragment, "FINISH");
                     chargingFinishResizeFragment.setArguments(bundle);
+                    transaction.replace(frameLayoutId, chargingFinishResizeFragment, "FINISH");
                     transaction.commit();
                 } catch (Exception e) {
                     logger.error("onFragmentChange error : FINISH {}", e.getMessage());
@@ -190,8 +190,8 @@ public class FragmentChange {
                 try {
                     onFrameLayoutChange(false);
                     QrFragment qrFragment = new QrFragment();
-                    transaction.replace(frameLayoutId, qrFragment, "QR_CODE");
                     qrFragment.setArguments(bundle);
+                    transaction.replace(frameLayoutId, qrFragment, "QR_CODE");
                     transaction.commit();
                 } catch (Exception e) {
                     logger.error("onFragmentChange error : QR_CODE {}", e.getMessage());
@@ -200,9 +200,9 @@ public class FragmentChange {
             case FAULT:
                 try {
                     FaultFragment faultFragment = new FaultFragment();
-                    transaction.replace(frameLayoutId, faultFragment, "FAULT");
                     bundle.putString("param2", "FAULT_MESSAGE");
                     faultFragment.setArguments(bundle);
+                    transaction.replace(frameLayoutId, faultFragment, "FAULT");
                     transaction.commit();
                 } catch (Exception e) {
                     logger.error("onFragmentChange error : FAULT {}", e.getMessage());
@@ -211,10 +211,10 @@ public class FragmentChange {
             case REBOOTING:
                 try {
                     FaultFragment faultFragment = new FaultFragment();
-                    transaction.replace(frameLayoutId, faultFragment, "REBOOTING");
                     bundle.putString("param2", "REBOOTING");
                     bundle.putString("param3", type);
                     faultFragment.setArguments(bundle);
+                    transaction.replace(frameLayoutId, faultFragment, "REBOOTING");
                     transaction.commit();
                 } catch (Exception e) {
                     logger.error("onFragmentChange error : REBOOTING {}", e.getMessage());
@@ -223,10 +223,9 @@ public class FragmentChange {
             case ADMIN_PASS:
                 try{
                     onFrameLayoutChange(true);
-                    frameLayoutId = R.id.fullScreen;
                     AdminPasswordFragment adminPasswordFragment = new AdminPasswordFragment();
-                    transaction.replace(frameLayoutId, adminPasswordFragment, "ADMIN_PASS");
                     adminPasswordFragment.setArguments(bundle);
+                    transaction.replace(R.id.fullScreen, adminPasswordFragment, "ADMIN_PASS");
                     transaction.commit();
 
                 } catch (Exception e){
@@ -236,10 +235,9 @@ public class FragmentChange {
             case ENVIRONMENT:
                 try{
                     onFrameLayoutChange(true);
-                    frameLayoutId = R.id.fullScreen;
                     EnvironmentFragment environmentFragment = new EnvironmentFragment();
-                    transaction.replace(frameLayoutId, environmentFragment, "ADMIN_PASS");
                     environmentFragment.setArguments(bundle);
+                    transaction.replace(R.id.fullScreen, environmentFragment, "ADMIN_PASS");
                     transaction.commit();
 
                 } catch (Exception e){
@@ -249,10 +247,9 @@ public class FragmentChange {
             case CONFIG_SETTING:
                 try{
                     onFrameLayoutChange(true);
-                    frameLayoutId = R.id.fullScreen;
                     ConfigSettingFragment configSettingFragment = new ConfigSettingFragment();
-                    transaction.replace(frameLayoutId, configSettingFragment, "CONFIG_SETTING");
                     configSettingFragment.setArguments(bundle);
+                    transaction.replace(R.id.fullScreen, configSettingFragment, "CONFIG_SETTING");
                     transaction.commit();
 
                 } catch (Exception e){
@@ -262,10 +259,9 @@ public class FragmentChange {
             case WEB_SOCKET:
                 try {
                     onFrameLayoutChange(true);
-                    frameLayoutId = R.id.fullScreen;
                     WebSocketDebugFragment webSocketDebugFragment = new WebSocketDebugFragment();
-                    transaction.replace(frameLayoutId, webSocketDebugFragment, "WEBSOCKET");
                     webSocketDebugFragment.setArguments(bundle);
+                    transaction.replace(R.id.fullScreen, webSocketDebugFragment, "WEBSOCKET");
                     transaction.commit();
                 } catch (Exception e) {
                     logger.error("onFragmentChange error : webSocketDebugFragment {}", e.getMessage());
@@ -274,10 +270,9 @@ public class FragmentChange {
             case CONTROL_BOARD_DEBUGGING:
                 try {
                     onFrameLayoutChange(true);
-                    frameLayoutId = R.id.fullScreen;
                     ControlDebugFragment controlDebugFragment = new ControlDebugFragment();
-                    transaction.replace(frameLayoutId, controlDebugFragment, "CONTROL");
                     controlDebugFragment.setArguments(bundle);
+                    transaction.replace(R.id.fullScreen, controlDebugFragment, "CONTROL");
                     transaction.commit();
                 } catch (Exception e) {
                     logger.error("onFragmentChange error : controlDebugFragment {}", e.getMessage());
@@ -286,10 +281,9 @@ public class FragmentChange {
             case LOAD_TEST:
                 try {
                     onFrameLayoutChange(true);
-                    frameLayoutId = R.id.fullScreen;
                     ProductTestFragment productTestFragment = new ProductTestFragment();
                     productTestFragment.setArguments(bundle);
-                    transaction.replace(frameLayoutId, productTestFragment, "LOAD_TEST");
+                    transaction.replace(R.id.fullScreen, productTestFragment, "LOAD_TEST");
                     transaction.commit();
                 } catch (Exception e) {
                     logger.error("onFragmentChange error : productTestFragment {}", e.getMessage());

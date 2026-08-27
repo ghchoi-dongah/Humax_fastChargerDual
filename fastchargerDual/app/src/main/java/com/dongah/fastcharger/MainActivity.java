@@ -219,6 +219,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < GlobalVariables.maxChannel; i++) {
             chargingCurrentData[i] = new ChargingCurrentData();
             chargingCurrentData[i].onCurrentDataClear();
+            chargingCurrentData[i].setConnectorId(i+1);
         }
 
         classUiProcess = new ClassUiProcess[GlobalVariables.maxChannel];
