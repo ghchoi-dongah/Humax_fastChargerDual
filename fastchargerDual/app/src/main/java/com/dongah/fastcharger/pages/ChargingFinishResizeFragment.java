@@ -204,7 +204,7 @@ public class ChargingFinishResizeFragment extends Fragment implements View.OnCli
             if (chargingCurrentData.isPrePaymentResult()) onTls3800Payment();
 
         } catch (Exception e) {
-            logger.error("onViewCreated : {}", e.getMessage());
+            logger.error("onViewCreated error : {}", e.getMessage());
         }
     }
 

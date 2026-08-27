@@ -1,11 +1,14 @@
 package com.dongah.fastcharger.pages;
 
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -52,6 +55,9 @@ public class PlugWaitFragment extends Fragment {
 
     int cnt = 0;
     TextView txtMessage;
+    ImageView imageViewLoading;
+    AnimationDrawable animationDrawable;
+
     AVLoadingIndicatorView avi;
 
     RxData rxData;
@@ -98,10 +104,14 @@ public class PlugWaitFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_plug_wait, container, false);
-        txtMessage = view.findViewById(R.id.txtMessage);
-        avi = view.findViewById(R.id.avi);
         chargerConfiguration = ((MainActivity) MainActivity.mContext).getChargerConfiguration();
         chargingCurrentData = ((MainActivity) MainActivity.mContext).getChargingCurrentData(mChannel);
+        rxData = ((MainActivity) MainActivity.mContext).getControlBoard().getRxData(mChannel);
+
+        txtMessage = view.findViewById(R.id.txtMessage);
+        imageViewLoading = view.findViewById(R.id.imageViewLoading);
+        imageViewLoading.setBackgroundResource(R.drawable.ani_loading);
+        animationDrawable = (AnimationDrawable) imageViewLoading.getBackground();
         return view;
     }
 
@@ -110,9 +120,8 @@ public class PlugWaitFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         try {
-            startAviAnim();
             cnt = 0;
-            rxData = ((MainActivity) getActivity()).getControlBoard().getRxData(mChannel);
+            animationDrawable.start();
             sharedModel = new ViewModelProvider(requireActivity()).get(SharedModel.class);
             requestStrings[0] = String.valueOf(mChannel);
             sharedModel.setMutableLiveData(requestStrings);
@@ -166,7 +175,6 @@ public class PlugWaitFragment extends Fragment {
 
                             //connecting wait
                             if (rxData.isCsPilot()) {
-                                cnt = 0;
                                 if (txtMessage.getTag() == null || !(boolean) txtMessage.getTag()) {
                                     txtMessage.setText(R.string.EVCheckMessage);
                                     txtMessage.setTag(true);
@@ -182,21 +190,25 @@ public class PlugWaitFragment extends Fragment {
         }
     }
 
-    void startAviAnim() {
-        avi.show();
-    }
-
-    void stopAviAnim() {
-        avi.hide();
-    }
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         try {
-            stopAviAnim();
             requestStrings[0] = String.valueOf(mChannel);
             sharedModel.setMutableLiveData(requestStrings);
+
+            if (animationDrawable != null) {
+                animationDrawable.stop();
+            }
+
+            if (imageViewLoading != null) {
+                Drawable bg = imageViewLoading.getBackground();
+                if (bg instanceof AnimationDrawable) {
+                    ((AnimationDrawable) bg).stop();
+                }
+                imageViewLoading.setBackground(null);
+            }
+
             if (countHandler != null) {
                 countHandler.removeCallbacks(countRunnable);
                 countHandler.removeCallbacksAndMessages(null);

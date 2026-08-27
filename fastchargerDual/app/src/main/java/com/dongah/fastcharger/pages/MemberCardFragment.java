@@ -1,7 +1,6 @@
 package com.dongah.fastcharger.pages;
 
 import android.annotation.SuppressLint;
-import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;

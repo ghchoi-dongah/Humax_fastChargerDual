@@ -1,5 +1,7 @@
 package com.dongah.fastcharger.pages;
 
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -7,6 +9,7 @@ import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +30,6 @@ import com.dongah.fastcharger.websocket.ocpp.core.ChargePointStatus;
 import com.dongah.fastcharger.websocket.ocpp.core.Reason;
 import com.dongah.fastcharger.websocket.socket.SocketReceiveMessage;
 import com.dongah.fastcharger.websocket.socket.SocketState;
-import com.wang.avi.AVLoadingIndicatorView;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,13 +60,14 @@ public class MemberCardWaitFragment extends Fragment  {
     int TIME_MAX = 20;
     int cnt = 0;
     TextView txtMemberWaiting;
-    AVLoadingIndicatorView avi;
+    ImageView imageViewLoading;
+    AnimationDrawable animationDrawable;
 
     ClassUiProcess classUiProcess;
     ChargingCurrentData chargingCurrentData;
     ChargerConfiguration chargerConfiguration;
 
-    Handler handler, countHandler;
+    Handler countHandler;
     Runnable countRunnable;
 
     View view;
@@ -105,9 +108,15 @@ public class MemberCardWaitFragment extends Fragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_member_card_wait, container, false);
+        chargerConfiguration = ((MainActivity) MainActivity.mContext).getChargerConfiguration();
+        classUiProcess = ((MainActivity) MainActivity.mContext).getClassUiProcess(mChannel);
+        chargingCurrentData = ((MainActivity) MainActivity.mContext).getChargingCurrentData(mChannel);
+
         txtMemberWaiting = view.findViewById(R.id.txtMemberWaiting);
-        avi = view.findViewById(R.id.avi);
-        handler = new Handler(Looper.getMainLooper());
+        imageViewLoading = view.findViewById(R.id.imageViewLoading);
+        imageViewLoading.setBackgroundResource(R.drawable.ani_loading);
+        animationDrawable = (AnimationDrawable) imageViewLoading.getBackground();
+
         return view;
     }
 
@@ -118,16 +127,11 @@ public class MemberCardWaitFragment extends Fragment  {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         try {
-            startAviAnim();
-            chargerConfiguration = ((MainActivity) MainActivity.mContext).getChargerConfiguration();
-            classUiProcess = ((MainActivity) MainActivity.mContext).getClassUiProcess(mChannel);
-            chargingCurrentData = ((MainActivity) MainActivity.mContext).getChargingCurrentData(mChannel);
-
+            animationDrawable.start();
 
             MediaPlayer mediaPlayer = MediaPlayer.create(MainActivity.mContext, R.raw.membercardwait);
             mediaPlayer.setOnCompletionListener(MediaPlayer::release);
             mediaPlayer.start();
-
 
             ((MainActivity) MainActivity.mContext).runOnUiThread(new Runnable() {
                 @Override
@@ -147,12 +151,9 @@ public class MemberCardWaitFragment extends Fragment  {
                                 //authorize result check
                                 if (!chargingCurrentData.isAuthorizeResult()) {
 //                                    txtMemberWaiting.setText(getResources().getText(R.string.txtMemberFail));
-                                    avi.setVisibility(View.INVISIBLE);
-                                    stopAviAnim();
-                                    if (handler != null) handler.removeCallbacksAndMessages(null);
                                 }
                             } catch (Exception e){
-                                logger.error(e.getMessage());
+                                logger.error("onViewCreated time out : {}", e.getMessage(), e);
                             }
                         }
                     };
@@ -295,27 +296,28 @@ public class MemberCardWaitFragment extends Fragment  {
                     }
                 }
             }
-
-
         } catch (Exception e) {
             logger.error("onViewCreated error : {}", e.getMessage(), e);
         }
-    }
-
-    void startAviAnim() {
-        avi.show();
-    }
-
-    void stopAviAnim() {
-        avi.hide();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         try {
-            stopAviAnim();
-            if (handler != null) {
+            if (animationDrawable != null) {
+                animationDrawable.stop();
+            }
+
+            if (imageViewLoading != null) {
+                Drawable bg = imageViewLoading.getBackground();
+                if (bg instanceof AnimationDrawable) {
+                    ((AnimationDrawable) bg).stop();
+                }
+                imageViewLoading.setBackground(null);
+            }
+
+            if (countHandler != null) {
                 countHandler.removeCallbacks(countRunnable);
                 countHandler.removeCallbacksAndMessages(null);
                 countHandler.removeMessages(0);

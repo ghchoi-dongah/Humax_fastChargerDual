@@ -22,17 +22,17 @@
         android:gravity="center"
         android:text="@string/memberWaitingMessage"
         android:textSize="44sp"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <com.wang.avi.AVLoadingIndicatorView
-        android:id="@+id/avi"
-        android:layout_width="220dp"
-        android:layout_height="220dp"
-        android:visibility="visible"
-        app:indicatorName="BallSpinFadeLoaderIndicator"
-        app:indicatorColor="@color/primary"
+    <ImageView
+        android:id="@+id/imageViewLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ani_loading"
+        android:importantForAccessibility="no"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

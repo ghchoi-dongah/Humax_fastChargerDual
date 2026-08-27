@@ -279,12 +279,6 @@ public class MainActivity extends AppCompatActivity {
                     return null;
                 });
 
-//        String baseUrl = chargerConfiguration.getServerConnectingString() + ":" + chargerConfiguration.getServerPort() +
-//                "/v2/" + chargerConfiguration.getChargerId();
-//        socketReceiveMessage = new SocketReceiveMessage(baseUrl);
-
-
-
         if (Objects.equals(chargerConfiguration.getAuthMode(), "0")) sendOcppAuthInfoRequest();
 
 

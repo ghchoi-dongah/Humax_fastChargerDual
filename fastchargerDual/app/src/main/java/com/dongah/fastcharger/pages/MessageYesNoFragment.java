@@ -1,11 +1,14 @@
 package com.dongah.fastcharger.pages;
 
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,10 +45,10 @@ public class MessageYesNoFragment extends Fragment implements View.OnClickListen
     private String mParam2;
     private int mChannel;
 
-    View view;
+    ImageView imageViewLoading;
+    AnimationDrawable animationDrawable;
     TextView txtMessage;
     Button btnCancel, btnConfirm;
-    AVLoadingIndicatorView avi;
 
     public MessageYesNoFragment() {
         // Required empty public constructor
@@ -82,26 +85,27 @@ public class MessageYesNoFragment extends Fragment implements View.OnClickListen
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_message_yes_no, container, false);
+        View view = inflater.inflate(R.layout.fragment_message_yes_no, container, false);
+        imageViewLoading = view.findViewById(R.id.imageViewLoading);
+        imageViewLoading.setBackgroundResource(R.drawable.ani_loading);
+        animationDrawable = (AnimationDrawable) imageViewLoading.getBackground();
         txtMessage = view.findViewById(R.id.txtMessage);
         btnCancel = view.findViewById(R.id.btnCancel);
         btnCancel.setOnClickListener(this);
         btnConfirm = view.findViewById(R.id.btnConfirm);
         btnConfirm.setOnClickListener(this);
-        avi = view.findViewById(R.id.avi);
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         try {
             MediaPlayer mediaPlayer = MediaPlayer.create(MainActivity.mContext, R.raw.messageyesno);
             mediaPlayer.setOnCompletionListener(MediaPlayer::release);
             mediaPlayer.start();
         } catch (Exception e) {
-            logger.error("MessageYesNoFragment onViewCreated error : {}", e.getMessage());
+            logger.error("onViewCreated error : {}", e.getMessage());
         }
     }
 
@@ -120,26 +124,36 @@ public class MessageYesNoFragment extends Fragment implements View.OnClickListen
                 txtMessage.setText(R.string.stoppingMessage);
                 btnConfirm.setVisibility(View.INVISIBLE);
                 btnCancel.setVisibility(View.INVISIBLE);
-                avi.setVisibility(View.VISIBLE);
-                startAviAnim();
+                imageViewLoading.setVisibility(View.VISIBLE);
+                animationDrawable.start();
             }
         } catch (Exception e) {
-            logger.error("MessageYesNoFragment  onClick : {} ", e.getMessage());
+            logger.error("onClick error : {} ", e.getMessage());
         }
     }
 
-    void startAviAnim() {
-        avi.show();
-    }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        try {
+            if (animationDrawable != null) {
+                animationDrawable.stop();
+            }
 
-    void stopAviAnim() {
-        avi.hide();
+            if (imageViewLoading != null) {
+                Drawable bg = imageViewLoading.getBackground();
+                if (bg instanceof AnimationDrawable) {
+                    ((AnimationDrawable) bg).stop();
+                }
+                imageViewLoading.setBackground(null);
+            }
+        } catch (Exception e) {
+            logger.error("onDestroyView error : {}", e.getMessage(), e);
+        }
     }
-
 
     @Override
     public void onDetach() {
         super.onDetach();
-        stopAviAnim();
     }
 }
