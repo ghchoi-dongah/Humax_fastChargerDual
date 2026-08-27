@@ -168,7 +168,7 @@ public class HeaderFragment extends Fragment implements View.OnClickListener {
             // initialize process
             for (int i = 0; i < GlobalVariables.maxChannel; i++) {
                 UiSeq uiSeq = ((MainActivity) MainActivity.mContext).getClassUiProcess(i).getUiSeq();
-                if (uiSeq.getValue() < 7 ) {
+                if (uiSeq.getValue() < 7 || uiSeq == UiSeq.QR_CODE) {
                     ((MainActivity) MainActivity.mContext).getClassUiProcess(i).setUiSeq(UiSeq.INIT);
                     ((MainActivity) MainActivity.mContext).getClassUiProcess(i).onHome();
                 }

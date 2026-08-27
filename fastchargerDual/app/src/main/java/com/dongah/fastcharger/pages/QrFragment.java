@@ -44,10 +44,13 @@ public class QrFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private int mChannel;
+
     Handler uiCheckHandler;
     ImageView imgQrCode, imageCheck;
     SharedModel sharedModel;
     String[] requestStrings = new String[1];
+    ChargingCurrentData chargingCurrentData;
+
 
     public QrFragment() {
         // Required empty public constructor
@@ -84,8 +87,9 @@ public class QrFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_qr, container, false);
+        chargingCurrentData = ((MainActivity) MainActivity.mContext).getChargingCurrentData(mChannel);
+
         imgQrCode = view.findViewById(R.id.imgQrCode);
         imageCheck = view.findViewById(R.id.bgCheck);
 
@@ -99,8 +103,6 @@ public class QrFragment extends Fragment {
 //            MediaPlayer mediaPlayer = MediaPlayer.create(MainActivity.mContext, R.raw.qr);
 //            mediaPlayer.setOnCompletionListener(MediaPlayer::release);
 //            mediaPlayer.start();
-            ChargingCurrentData chargingCurrentData = ((MainActivity) MainActivity.mContext).getChargingCurrentData(mChannel);
-            chargingCurrentData.setConnectorId(mChannel + 1);
 
             uiCheckHandler = new Handler();
             uiCheckHandler.postDelayed(new Runnable() {
@@ -155,14 +157,26 @@ public class QrFragment extends Fragment {
     }
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        try {
+            if (uiCheckHandler != null) {
+                uiCheckHandler.removeCallbacksAndMessages(null);
+            }
+        } catch (Exception e) {
+            logger.error("onDestroyView error : {}", e.getMessage(), e);
+        }
+    }
+
+    @Override
     public void onDetach() {
         super.onDetach();
-        uiCheckHandler.removeCallbacksAndMessages(null);
-        uiCheckHandler.removeMessages(0);
-
-        // back image
-        requestStrings[0] = String.valueOf(mChannel);
-        sharedModel.setMutableLiveData(requestStrings);
-
+        try {
+            // back image
+            requestStrings[0] = String.valueOf(mChannel);
+            sharedModel.setMutableLiveData(requestStrings);
+        } catch (Exception e) {
+            logger.error("onDetach error : {}", e.getMessage(), e);
+        }
     }
 }
