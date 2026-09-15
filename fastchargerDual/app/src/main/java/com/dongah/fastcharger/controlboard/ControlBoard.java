@@ -159,8 +159,8 @@ public class ControlBoard implements Runnable {
                         short fw = rxData[curCh].getFirmWareVersion();
                         if (fw > 0) {
                             String fwVersion = new ControlBoardUtil().parseVersion(fw);
-                            if (fwVersion != null) {
-                                ChargerConfiguration chargerConfiguration = ((MainActivity) MainActivity.mContext).getChargerConfiguration();
+                            ChargerConfiguration chargerConfiguration = ((MainActivity) MainActivity.mContext).getChargerConfiguration();
+                            if (fwVersion != null && !Objects.equals(fwVersion, chargerConfiguration.getFirmwareVersion())) {
                                 chargerConfiguration.setFirmwareVersion(fwVersion);
                                 chargerConfiguration.onSaveConfiguration();
                                 GlobalVariables.FW_VERSION = fwVersion;
