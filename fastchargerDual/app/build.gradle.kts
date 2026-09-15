@@ -6,21 +6,11 @@ android {
     namespace = "com.dongah.fastcharger"
     compileSdk = 35
 
-//    signingConfigs {
-//        getByName("debug") {
-//            keyAlias = "androiddebugkey"
-//            keyPassword = "android"
-//            storeFile = file("D:\\AndroidDongah\\JSK\\platform.jks")
-//            storePassword = "android"
-//        }
-//    }
-
-    // hola
     signingConfigs {
         getByName("debug") {
             keyAlias = "androiddebugkey"
             keyPassword = "android"
-            storeFile = file("D:\\AndroidDongah\\JKS_hola\\platform.jks")
+            storeFile = file("D:\\AndroidDongah\\JSK\\platform.jks")
             storePassword = "android"
         }
     }
