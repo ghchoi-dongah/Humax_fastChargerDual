@@ -139,7 +139,7 @@ public class PlugWaitFragment extends Fragment {
                         @Override
                         public void run() {
                             cnt++;
-                            int timeout = GlobalVariables.getConnectionTimeOut() == 0 ? 60 : GlobalVariables.getConnectionTimeOut();
+                            int timeout = GlobalVariables.getConnectionTimeOut() == 0 ? 90 : GlobalVariables.getConnectionTimeOut();
                             if (cnt >= timeout) {
                                 countHandler.removeCallbacks(countRunnable);
                                 countHandler.removeCallbacksAndMessages(null);

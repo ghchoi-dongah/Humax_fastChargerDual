@@ -199,6 +199,7 @@ public class FragmentChange {
                 break;
             case FAULT:
                 try {
+                    onFrameLayoutChange(false);
                     FaultFragment faultFragment = new FaultFragment();
                     bundle.putString("param2", "FAULT_MESSAGE");
                     faultFragment.setArguments(bundle);
@@ -210,6 +211,7 @@ public class FragmentChange {
                 break;
             case REBOOTING:
                 try {
+                    onFrameLayoutChange(false);
                     FaultFragment faultFragment = new FaultFragment();
                     bundle.putString("param2", "REBOOTING");
                     bundle.putString("param3", type);
@@ -295,24 +297,47 @@ public class FragmentChange {
 
     public void onFrameLayoutChange(boolean hidden) {
         //main activity layout fullScreen change
-        try {
-            FrameLayout frameLayout0 = ((MainActivity) MainActivity.mContext).findViewById(R.id.ch0);
-            FrameLayout frameLayout1 = ((MainActivity) MainActivity.mContext).findViewById(R.id.ch1);
-            FrameLayout fullScreen = ((MainActivity) MainActivity.mContext).findViewById(R.id.fullScreen);
+        MainActivity activity = (MainActivity) MainActivity.mContext;
 
-            if (hidden) {
-                fullScreen.setVisibility(View.VISIBLE);
-                frameLayout0.setVisibility(View.INVISIBLE);
-                frameLayout1.setVisibility(View.INVISIBLE);
-            } else {
-                onFrameLayoutRemove();
-                fullScreen.setVisibility(View.INVISIBLE);
-                frameLayout0.setVisibility(View.VISIBLE);
-                frameLayout1.setVisibility(View.VISIBLE);
-            }
-        } catch (Exception e) {
-            logger.error("onFrameLayoutChange error : {}", e.getMessage());
+        if (activity == null || activity.isFinishing() || activity.isDestroyed()) {
+            logger.error("onFrameLayoutChange skipped: activity is null or destroyed");
+            return;
         }
+
+        activity.runOnUiThread(() -> {
+            try {
+                FrameLayout frameLayout0 = ((MainActivity) MainActivity.mContext).findViewById(R.id.ch0);
+                FrameLayout frameLayout1 = ((MainActivity) MainActivity.mContext).findViewById(R.id.ch1);
+                FrameLayout fullScreen = ((MainActivity) MainActivity.mContext).findViewById(R.id.fullScreen);
+                FrameLayout frameHeader = ((MainActivity) MainActivity.mContext).findViewById(R.id.header);
+                FrameLayout frameFooter = ((MainActivity) MainActivity.mContext).findViewById(R.id.frameFooter);
+
+                if (frameLayout0 == null || frameLayout1 == null || fullScreen == null || frameHeader == null || frameFooter == null) {
+                    logger.error(
+                            "onFrameLayoutChange view null: ch0={}, ch1={}, frameFull={}, frameHeader={}, frameFooter={}",
+                            frameLayout0, frameLayout1, fullScreen, frameHeader, frameFooter
+                    );
+                    return;
+                }
+
+                if (hidden) {
+                    fullScreen.setVisibility(View.VISIBLE);
+                    frameLayout0.setVisibility(View.INVISIBLE);
+                    frameLayout1.setVisibility(View.INVISIBLE);
+                    frameHeader.setVisibility(View.INVISIBLE);
+                    frameFooter.setVisibility(View.INVISIBLE);
+                } else {
+                    onFrameLayoutRemove();
+                    fullScreen.setVisibility(View.INVISIBLE);
+                    frameLayout0.setVisibility(View.VISIBLE);
+                    frameLayout1.setVisibility(View.VISIBLE);
+                    frameHeader.setVisibility(View.VISIBLE);
+                    frameFooter.setVisibility(View.VISIBLE);
+                }
+            } catch (Exception e) {
+                logger.error("onFrameLayoutChange error : {}", e.getMessage());
+            }
+        });
     }
 
     public void onAdminLayoutChange(UiSeq uiSeq) {
