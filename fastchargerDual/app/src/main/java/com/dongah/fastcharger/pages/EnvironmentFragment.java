@@ -132,7 +132,7 @@ public class EnvironmentFragment extends Fragment implements View.OnClickListene
                     break;
             }
         } else if (Objects.equals(getId, R.id.btnMember)) {
-            Toast.makeText(this.getActivity(), "준비중.......", Toast.LENGTH_SHORT).show();
+            ((MainActivity) MainActivity.mContext).getFragmentChange().onFragmentChange(mChannel, UiSeq.MEMBER_REGISTER, "MEMBER_REGISTER", null);
         } else if (Objects.equals(getId, R.id.btnExit)) {
             ActivityCompat.finishAffinity((MainActivity) MainActivity.mContext);
             System.exit(0);

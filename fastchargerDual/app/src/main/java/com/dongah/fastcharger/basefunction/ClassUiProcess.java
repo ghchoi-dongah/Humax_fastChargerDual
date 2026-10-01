@@ -532,7 +532,12 @@ public class ClassUiProcess implements TLS3800Listener {
                             ));
                 }
             } else if (Objects.equals(TLS3800ResponseType.RF_READ, type))  {
-                if (uiSeq != UiSeq.MEMBER_CARD_WAIT) {
+                if (GlobalVariables.memberRegisterMode && GlobalVariables.memberCardRegisterCallback != null) {
+                    String cardId = returnValue.get("idTag");
+                    if (cardId != null) {
+                        GlobalVariables.memberCardRegisterCallback.onCardReceived(cardId);
+                    }
+                } else if (uiSeq != UiSeq.MEMBER_CARD_WAIT) {
                     ((MainActivity) MainActivity.mContext).getClassUiProcess(ch).setUiSeq(UiSeq.MEMBER_CARD_WAIT);
                     fragmentChange.onFragmentChange(ch, UiSeq.MEMBER_CARD_WAIT, null, null);
                 }

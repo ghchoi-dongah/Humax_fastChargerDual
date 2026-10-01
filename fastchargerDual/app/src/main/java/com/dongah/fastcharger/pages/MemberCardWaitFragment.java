@@ -34,6 +34,11 @@ import com.dongah.fastcharger.websocket.socket.SocketState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.json.JSONArray;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.Objects;
 
 /**
@@ -160,6 +165,42 @@ public class MemberCardWaitFragment extends Fragment  {
                     countHandler.postDelayed(countRunnable, 1000);
                 }
             });
+
+
+            /**
+             * Local 회원 인증인 경우
+             */
+            if (Objects.equals(chargerConfiguration.getAuthMode(), "4")) {
+                boolean result = false;
+                File file = new File(GlobalVariables.getRootPath() + File.separator + "localMemberCardList");
+                if (file.exists()) {
+                    try {
+                        FileReader fileReader = new FileReader(file);
+                        BufferedReader bufferedReader = new BufferedReader(fileReader);
+                        StringBuilder sb = new StringBuilder();
+                        String line;
+                        while ((line = bufferedReader.readLine()) != null) sb.append(line);
+                        bufferedReader.close();
+                        JSONArray arr = new JSONArray(sb.toString());
+                        for (int i = 0; i < arr.length(); i++) {
+                            if (Objects.equals(chargingCurrentData.getIdTag(), arr.getString(i))) {
+                                chargingCurrentData.setChargePointStatus(ChargePointStatus.Preparing);
+                                result = true;
+                                break;
+                            }
+                        }
+                    } catch (Exception e) {
+                        logger.error("local member read fail : {}", e.getMessage());
+                    }
+                }
+                if (result) {
+                    ((MainActivity) MainActivity.mContext).getClassUiProcess(mChannel).setUiSeq(UiSeq.PLUG_CHECK);
+                    ((MainActivity) MainActivity.mContext).getFragmentChange().onFragmentChange(mChannel,UiSeq.PLUG_CHECK, "PLUG_CHECK", null);
+                } else {
+                    classUiProcess.onHome();
+                }
+                return;
+            }
 
 
             //나중에 부활 예정

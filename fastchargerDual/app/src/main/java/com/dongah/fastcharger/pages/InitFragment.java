@@ -197,10 +197,16 @@ public class InitFragment extends Fragment implements View.OnClickListener {
                     ((MainActivity) getActivity()).getToastPositionMake().onShowToast(mChannel, "서버 연결 DISCONNECT. \n충전을 할 수 없습니다.");
                     logger.error(e.getMessage());
                 }
-            } else if (Objects.equals(((MainActivity) getActivity()).getChargerConfiguration().getAuthMode(), "4")) {
+            } else if (Objects.equals(((MainActivity) getActivity()).getChargerConfiguration().getAuthMode(), "3")) {
                 ((MainActivity) getActivity()).getControlBoard().getTxData(mChannel).setStart(true);
                 ((MainActivity) getActivity()).getControlBoard().getTxData(mChannel).setStop(false);
                 ((MainActivity) getActivity()).getClassUiProcess(mChannel).setUiSeq(UiSeq.CONNECT_CHECK);
+            } else if (Objects.equals(((MainActivity) getActivity()).getChargerConfiguration().getAuthMode(), "4")) {
+                // local 회원 인증용
+                double testPrice = Double.parseDouble(((MainActivity) getActivity()).getChargerConfiguration().getTestPrice());
+                ((MainActivity) getActivity()).getChargingCurrentData(mChannel).setPowerUnitPrice(testPrice);
+                ((MainActivity) getActivity()).getClassUiProcess(mChannel).setUiSeq(UiSeq.MEMBER_CARD);
+                ((MainActivity) getActivity()).getFragmentChange().onFragmentChange(mChannel, UiSeq.MEMBER_CARD, "MEMBER_CARD", null);
             } else {
                 ((MainActivity) getActivity()).getClassUiProcess(mChannel).setUiSeq(UiSeq.PLUG_CHECK);
                 double testPrice = Double.parseDouble(((MainActivity) getActivity()).getChargerConfiguration().getTestPrice());

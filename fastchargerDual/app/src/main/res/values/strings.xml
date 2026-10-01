@@ -179,4 +179,14 @@
     <string name="connectorDisconnectMessage"><font color="#FF000000">커넥터를 분리하여 정리해 주세요.</font></string>
     <string name="EVCheckMessage">차량과 통신 확인 중</string>
 
+    <string name="txtCustomerCenterTel">고객센터 번호</string>
+    <string name="memberRegisterTitle">회원 등록 관리</string>
+    <string name="btnMemberRegister">등 록</string>
+    <string name="btnMemberDeleteMode">삭 제</string>
+    <string name="btnMemberDeleteConfirm">삭제 확인</string>
+    <string name="memberCardTaggingRegister">카드를 태그해 주세요\n(등록 모드)</string>
+    <string name="memberRegisterSuccess">회원 카드 등록 완료</string>
+    <string name="memberAlreadyExists">이미 등록된 카드입니다</string>
+    <string name="memberDeleteConfirm">선택한 카드를 삭제하시겠습니까?</string>
+    <string name="memberListEmpty">등록된 회원이 없습니다</string>
 </resources>

@@ -30,7 +30,8 @@ public enum UiSeq {
     WEB_SOCKET(26),
     LOAD_TEST(27),
     LOAD_TEST_TOTAL(28),
-    LOAD_TEST_IO(29);
+    LOAD_TEST_IO(29),
+    MEMBER_REGISTER(30);
 
     private final int value;
 

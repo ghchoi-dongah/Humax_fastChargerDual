@@ -25,6 +25,7 @@ import com.dongah.fastcharger.pages.HeaderFragment;
 import com.dongah.fastcharger.pages.InitFragment;
 import com.dongah.fastcharger.pages.MemberCardFragment;
 import com.dongah.fastcharger.pages.MemberCardWaitFragment;
+import com.dongah.fastcharger.pages.MemberRegisterFragment;
 import com.dongah.fastcharger.pages.MessageYesNoFragment;
 import com.dongah.fastcharger.pages.PlugWaitFragment;
 import com.dongah.fastcharger.pages.ProductTestFragment;
@@ -289,6 +290,17 @@ public class FragmentChange {
                     transaction.commit();
                 } catch (Exception e) {
                     logger.error("onFragmentChange error : productTestFragment {}", e.getMessage());
+                }
+                break;
+            case MEMBER_REGISTER:
+                try {
+                    onFrameLayoutChange(true);
+                    MemberRegisterFragment memberRegisterFragment = new MemberRegisterFragment();
+                    memberRegisterFragment.setArguments(bundle);
+                    transaction.replace(R.id.fullScreen, memberRegisterFragment, "MEMBER_REGISTER");
+                    transaction.commit();
+                } catch (Exception e) {
+                    logger.error("onFragmentChange error : MemberRegisterFragment {}", e.getMessage());
                 }
                 break;
         }

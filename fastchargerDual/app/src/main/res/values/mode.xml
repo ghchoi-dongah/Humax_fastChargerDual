@@ -5,5 +5,6 @@
         <item>2. Auto</item>
         <item>3. 테스트</item>
         <item>4. 계량기테스트</item>
+        <item>5. local</item>
     </string-array>
 </resources>
